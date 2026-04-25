@@ -1,0 +1,10 @@
+# SSL certificates — never commit private keys to git!
+ssl/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db

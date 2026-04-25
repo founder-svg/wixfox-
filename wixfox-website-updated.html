@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WixFox Digital Solutions – Scaling Businesses Digitally</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wixfox-styles.css">
+</head>
+<body>
+
+
+<!-- WhatsApp Popup Chat Button -->
+<div class="wa-popup-wrap" id="waPopupWrap">
+
+  <!-- Popup Card -->
+  <div class="wa-popup-card" id="waPopupCard">
+    <div class="wa-popup-header">
+      <div class="wa-popup-avatar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="wa-popup-online"></span>
+      </div>
+      <div class="wa-popup-info">
+        <div class="wa-popup-name">WixFox Digital</div>
+        <div class="wa-popup-status">🟢 Online — Typically replies instantly</div>
+      </div>
+      <button class="wa-popup-close" onclick="closeWaPopup()" aria-label="Close">✕</button>
+    </div>
+    <div class="wa-popup-body">
+      <div class="wa-popup-bubble">
+        👋 Hi there! Welcome to <strong>WixFox Digital Solutions</strong>.<br><br>
+        How can we help you grow your business today? Click below to start chatting!
+      </div>
+    </div>
+    <a href="https://wa.me/919724225971?text=Hi%20WixFox!%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20your%20digital%20services." target="_blank" class="wa-popup-cta">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="18" height="18">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Start Chat on WhatsApp
+    </a>
+  </div>
+
+  <!-- Trigger Button -->
+  <button class="wa-chat-btn" id="waChatBtn" onclick="toggleWaPopup()" aria-label="Chat on WhatsApp">
+    <span class="wa-btn-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </span>
+    <span class="wa-btn-text">Chat Now</span>
+    <span class="wa-btn-pulse"></span>
+  </button>
+
+</div>
+
+<script>
+  function toggleWaPopup() {
+    const card = document.getElementById('waPopupCard');
+    const btn  = document.getElementById('waChatBtn');
+    const open = card.classList.toggle('wa-popup-card--open');
+    btn.classList.toggle('wa-chat-btn--active', open);
+  }
+  function closeWaPopup() {
+    document.getElementById('waPopupCard').classList.remove('wa-popup-card--open');
+    document.getElementById('waChatBtn').classList.remove('wa-chat-btn--active');
+  }
+  // auto-open after 4 seconds
+  setTimeout(() => {
+    document.getElementById('waPopupCard').classList.add('wa-popup-card--open');
+    document.getElementById('waChatBtn').classList.add('wa-chat-btn--active');
+  }, 4000);
+</script>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMobileMenu()">Home</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#process" onclick="closeMobileMenu()">Process</a>
+  <a href="#why" onclick="closeMobileMenu()">Why Us</a>
+  <a href="#cta" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">🦊</div>
+    <div class="nav-logo-text">Wix<span>Fox</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#cta" class="nav-cta">Get Started</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🚀 Digital Growth Agency</div>
+    <h1 class="hero-title">
+      Scaling<br>
+      <span class="line2">Businesses</span>
+      <span class="line3">Digitally</span>
+    </h1>
+    <p class="hero-sub">Powerful strategies. Creative solutions. Real results. WixFox Digital Solutions helps your brand dominate the digital landscape with precision and creativity.</p>
+    <div class="hero-buttons">
+      <a href="#cta" class="btn-primary">🦊 Free Consultation</a>
+      <a href="#services" class="btn-secondary">Our Services →</a>
+      <a href="https://wa.me/919724225971?text=Hi%20WixFox!%20I%27m%20interested%20in%20your%20digital%20services." target="_blank" class="btn-whatsapp">💬 WhatsApp Us</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-fox-wrap">
+      <img src="https://i.imgur.com/placeholder.png" alt="WixFox" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'font-size:200px;filter:drop-shadow(0 20px 60px rgba(255,107,0,0.4))\'>🦊</div>'">
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num"><span class="counter" data-target="150">0</span>+</div>
+      <div class="stat-label">Clients Served</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="counter" data-target="300">0</span>+</div>
+      <div class="stat-label">Projects Delivered</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="counter" data-target="5">0</span>+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="counter" data-target="98">0</span>%</div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="ticker-item">Website Development <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Digital Marketing <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Paid Advertising <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Video Editing <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Graphic Design <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Lead Generation <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">SEO Optimization <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Social Media <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Brand Growth <span class="ticker-dot">◆</span></div>
+    <!-- duplicate for infinite loop -->
+    <div class="ticker-item">Website Development <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Digital Marketing <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Paid Advertising <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Video Editing <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Graphic Design <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Lead Generation <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">SEO Optimization <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Social Media <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Brand Growth <span class="ticker-dot">◆</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-stack reveal-left">
+      <div class="about-img-main">
+        <div style="text-align:center;padding:30px">
+          <div style="font-size:120px;filter:drop-shadow(0 10px 30px rgba(255,107,0,0.4))">🦊</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange);letter-spacing:2px">WixFox Digital Solutions</div>
+          <div style="font-size:13px;color:var(--gray);margin-top:8px">From Idea to Impact – We Make It Happen!</div>
+        </div>
+      </div>
+      <div class="about-img-float">
+        <div class="about-img-float-inner">
+          <div class="about-img-float-num">5★</div>
+          <div class="about-img-float-text">Rating</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:6px">USA & Global Clients</div>
+        </div>
+      </div>
+      <div class="about-badge-float">🚀 Trusted Worldwide</div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-label">About WixFox</div>
+      <h2 class="section-title">We Are Your <span>Digital Growth</span> Partner</h2>
+      <p class="section-sub">WixFox Digital Solutions is a results-driven digital agency dedicated to helping businesses build a strong online presence, attract more customers, and achieve massive growth. We combine creativity, technology, and strategy to deliver solutions that drive real results.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="about-feature-icon">🎯</div>
+          <div>
+            <div class="about-feature-title">Results-Driven Approach</div>
+            <div class="about-feature-desc">Every strategy we build is laser-focused on your growth metrics — traffic, leads, and conversions that actually matter to your bottom line.</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">💡</div>
+          <div>
+            <div class="about-feature-title">Creative & Innovative</div>
+            <div class="about-feature-desc">We don't do cookie-cutter. From branding to ads, every piece of content is crafted uniquely to make your brand stand out in a crowded market.</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">🌍</div>
+          <div>
+            <div class="about-feature-title">Global Experience</div>
+            <div class="about-feature-desc">Trusted by clients in the USA and across the globe, we bring world-class digital expertise tailored to your local and international goals.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our <span>Services</span></h2>
+    </div>
+    <p style="font-size:15px;color:var(--gray);max-width:360px;line-height:1.8">Everything your business needs to succeed online — under one roof, delivered with excellence.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon orange">🌐</div>
+      <div class="service-title">Website Development</div>
+      <div class="service-desc">Professional, responsive, SEO-friendly websites that convert visitors into customers. From landing pages to full e-commerce stores.</div>
+      <div class="service-tags">
+        <span class="service-tag">Business Sites</span>
+        <span class="service-tag">E-commerce</span>
+        <span class="service-tag">Landing Pages</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card blue-card reveal" style="transition-delay:0.1s">
+      <div class="service-icon blue">📣</div>
+      <div class="service-title">Digital Marketing</div>
+      <div class="service-desc">Grow your brand with powerful SEO, social media management, and data-driven strategies that put you ahead of the competition.</div>
+      <div class="service-tags">
+        <span class="service-tag">SEO</span>
+        <span class="service-tag">Social Media</span>
+        <span class="service-tag">Brand Growth</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.2s">
+      <div class="service-icon orange">📊</div>
+      <div class="service-title">Paid Ads Management</div>
+      <div class="service-desc">High-converting Facebook, Instagram, and Google Ads campaigns engineered for maximum ROI and qualified lead generation.</div>
+      <div class="service-tags">
+        <span class="service-tag">Facebook Ads</span>
+        <span class="service-tag">Google Ads</span>
+        <span class="service-tag">Instagram Ads</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card blue-card reveal" style="transition-delay:0.3s">
+      <div class="service-icon blue">🎬</div>
+      <div class="service-title">Video Editing & Ads Video</div>
+      <div class="service-desc">Engaging promotional videos, ad creatives, reels, and shorts that capture attention and drive action in seconds.</div>
+      <div class="service-tags">
+        <span class="service-tag">Promo Videos</span>
+        <span class="service-tag">Ad Creatives</span>
+        <span class="service-tag">Reels & Shorts</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.4s">
+      <div class="service-icon orange">🎨</div>
+      <div class="service-title">Graphic Design</div>
+      <div class="service-desc">Creative designs for social media posts, banners, brochures, and full brand identity that leaves a lasting impression.</div>
+      <div class="service-tags">
+        <span class="service-tag">Social Posts</span>
+        <span class="service-tag">Banners</span>
+        <span class="service-tag">Branding</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card blue-card reveal" style="transition-delay:0.5s">
+      <div class="service-icon blue">🎯</div>
+      <div class="service-title">Lead Generation</div>
+      <div class="service-desc">Targeted lead campaigns, email & CRM integration, and quality leads that convert — fueling sustainable business growth.</div>
+      <div class="service-tags">
+        <span class="service-tag">Lead Campaigns</span>
+        <span class="service-tag">CRM</span>
+        <span class="service-tag">Email Marketing</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div style="text-align:center;margin-bottom:0">
+    <div class="section-label reveal" style="justify-content:center">
+      <span style="width:30px;height:2px;background:var(--orange);display:inline-block"></span>
+      How We Work
+      <span style="width:30px;height:2px;background:var(--orange);display:inline-block"></span>
+    </div>
+    <h2 class="section-title reveal">Our <span>4-Step</span> Process</h2>
+    <p class="section-sub reveal" style="margin:0 auto;text-align:center">From Idea to Impact — a proven process that delivers extraordinary results every single time.</p>
+  </div>
+  <div class="process-timeline">
+    <div class="process-line"></div>
+    <div class="process-step reveal">
+      <div class="process-num-wrap">
+        <div class="process-num-ring">
+          <div class="process-num">01</div>
+        </div>
+        <div class="process-icon">🔍</div>
+      </div>
+      <div class="process-title">Understand Your Business</div>
+      <div class="process-desc">We dive deep into your goals, target audience, competitors, and market to build a complete picture of what success looks like for you.</div>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.15s">
+      <div class="process-num-wrap">
+        <div class="process-num-ring">
+          <div class="process-num">02</div>
+        </div>
+        <div class="process-icon">📋</div>
+      </div>
+      <div class="process-title">Strategy Planning</div>
+      <div class="process-desc">A custom digital strategy is crafted — covering channels, timelines, content, and KPIs — aligned perfectly with your business objectives.</div>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.3s">
+      <div class="process-num-wrap">
+        <div class="process-num-ring">
+          <div class="process-num">03</div>
+        </div>
+        <div class="process-icon">⚙️</div>
+      </div>
+      <div class="process-title">Execution & Optimization</div>
+      <div class="process-desc">We launch, monitor, test, and continuously optimize every campaign and asset for peak performance and maximum ROI.</div>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.45s">
+      <div class="process-num-wrap">
+        <div class="process-num-ring">
+          <div class="process-num">04</div>
+        </div>
+        <div class="process-icon">📈</div>
+      </div>
+      <div class="process-title">Growth & Scaling</div>
+      <div class="process-desc">With proven results in hand, we scale what works — turning good campaigns into great ones and steadily growing your digital footprint.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-visual reveal-left">
+      <div class="why-card-main">
+        <div style="font-size:40px;margin-bottom:16px">🦊</div>
+        <div class="why-big-text">WHY<br>WIXFOX?</div>
+        <div class="why-card-label">The Smart Choice for Digital Growth</div>
+        <div class="why-card-desc">We don't just run campaigns — we become your dedicated digital growth partner, invested in your success as much as you are. Every decision we make is backed by data and driven by results.</div>
+        <div style="margin-top:32px;padding:20px;background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.2);border-radius:14px;font-size:14px;font-style:italic;color:rgba(255,255,255,0.8)">
+          "From Idea to Impact — We Make It Happen!" 🚀
+        </div>
+      </div>
+      <div class="why-floating-badge badge1">⭐ Premium Quality</div>
+      <div class="why-floating-badge badge2">🌍 Global Clients</div>
+    </div>
+    <div class="why-reasons reveal-right">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title" style="margin-bottom:32px">5 Reasons to <span>Choose WixFox</span></h2>
+      <div class="why-reason">
+        <div class="why-reason-icon">🎯</div>
+        <div>
+          <div class="why-reason-title">Result-Oriented Approach</div>
+          <div class="why-reason-desc">We focus on what matters most — your growth. Every action, campaign, and creative is tied to measurable outcomes.</div>
+        </div>
+      </div>
+      <div class="why-reason">
+        <div class="why-reason-icon">💰</div>
+        <div>
+          <div class="why-reason-title">Affordable Pricing</div>
+          <div class="why-reason-desc">Premium services without the premium price tag. We believe great digital marketing should be accessible to all businesses.</div>
+        </div>
+      </div>
+      <div class="why-reason">
+        <div class="why-reason-icon">⚡</div>
+        <div>
+          <div class="why-reason-title">Fast & On-Time Delivery</div>
+          <div class="why-reason-desc">We respect your time. Projects are delivered on schedule, without compromising on quality or attention to detail.</div>
+        </div>
+      </div>
+      <div class="why-reason">
+        <div class="why-reason-icon">🤝</div>
+        <div>
+          <div class="why-reason-title">Dedicated Support</div>
+          <div class="why-reason-desc">We're always here when you need us. A dedicated team ready to assist, advise, and act on your behalf at all times.</div>
+        </div>
+      </div>
+      <div class="why-reason">
+        <div class="why-reason-icon">🌐</div>
+        <div>
+          <div class="why-reason-title">USA & Global Experience</div>
+          <div class="why-reason-desc">Trusted by clients in the USA and worldwide, bringing global strategies that work in any market.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="results-intro">
+    <div class="section-label">Our Portfolio</div>
+    <h2 class="section-title">Real <span>Results</span> We Deliver</h2>
+    <p class="section-sub" style="margin:0 auto">Proven outcomes across industries — from local businesses to global brands.</p>
+  </div>
+  <div class="results-grid">
+    <div class="result-card reveal">
+      <div class="result-card-top">
+        <div class="result-card-visual v1">🏪</div>
+        <div class="result-stat-badge">+340% ROI</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">E-Commerce</div>
+        <div class="result-title">Online Store — USA Market</div>
+        <div class="result-desc">Built a full e-commerce website with Facebook & Google Ads, achieving 340% ROI in 3 months through targeted campaigns.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.1s">
+      <div class="result-card-top">
+        <div class="result-card-visual v2">🍕</div>
+        <div class="result-stat-badge">5x Leads</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">Food & Beverage</div>
+        <div class="result-title">Restaurant Chain — Social Media</div>
+        <div class="result-desc">Social media management + Instagram Reels strategy multiplied their local leads by 5x and drove massive foot traffic.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.2s">
+      <div class="result-card-top">
+        <div class="result-card-visual v3">💊</div>
+        <div class="result-stat-badge">2.1x Sales</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">Healthcare</div>
+        <div class="result-title">Health Supplement Brand</div>
+        <div class="result-desc">Landing page redesign + Google Ads optimization doubled their online sales while reducing cost per acquisition by 38%.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.3s">
+      <div class="result-card-top">
+        <div class="result-card-visual v4">🎓</div>
+        <div class="result-stat-badge">+800 Enrolments</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">Education</div>
+        <div class="result-title">Online Coaching Institute</div>
+        <div class="result-desc">Lead generation funnels + CRM integration generated 800+ qualified enrolments within the first quarter of campaigns.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.4s">
+      <div class="result-card-top">
+        <div class="result-card-visual v5">🏠</div>
+        <div class="result-stat-badge">60+ Hot Leads/mo</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">Real Estate</div>
+        <div class="result-title">Property Developer — India</div>
+        <div class="result-desc">Consistent 60+ qualified real estate leads per month through targeted Facebook ad campaigns and high-converting landing pages.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.5s">
+      <div class="result-card-top">
+        <div class="result-card-visual v6">💻</div>
+        <div class="result-stat-badge">+220% Traffic</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">SaaS / Tech</div>
+        <div class="result-title">Tech Startup — Website & SEO</div>
+        <div class="result-desc">New website build with SEO strategy grew organic traffic by 220% in 6 months, reducing paid ad dependency significantly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-intro">
+    <div class="section-label">Testimonials</div>
+    <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+    <p class="section-sub" style="margin:0 auto">Real words from real clients who trusted WixFox to grow their business.</p>
+  </div>
+  <div class="testimonials-track-wrap">
+    <div class="testimonials-track">
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox transformed our online presence completely. Within 3 months, our website traffic doubled and our sales skyrocketed. Akash and the team are genuinely invested in your growth.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--orange),var(--orange-light))">RK</div>
+          <div>
+            <div class="testi-name">Rahul Kumar</div>
+            <div class="testi-role">E-commerce Store Owner, USA</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The paid ads campaigns WixFox ran for us delivered a 4x return on our investment. Their team is responsive, professional, and truly understands what businesses need to grow digitally.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue))">SM</div>
+          <div>
+            <div class="testi-name">Sarah Mitchell</div>
+            <div class="testi-role">Founder, Health Brand, UK</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Incredible graphic design work and social media management. Our Instagram engagement went from almost nothing to thousands of genuine followers who actually buy from us!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#2EA043,#1A6FD4)">AP</div>
+          <div>
+            <div class="testi-name">Arun Patel</div>
+            <div class="testi-role">Restaurant Owner, India</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox built us a stunning website and then backed it up with an SEO strategy that actually works. We now rank on the first page of Google for our key terms. Absolutely brilliant!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#9B59B6,#1A6FD4)">JW</div>
+          <div>
+            <div class="testi-name">James Wilson</div>
+            <div class="testi-role">Tech Startup CEO, Canada</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The lead generation campaigns have been a game changer. We now get 60+ hot leads every single month. The ROI speaks for itself — WixFox is worth every penny.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E67E22,var(--orange))">DS</div>
+          <div>
+            <div class="testi-name">Deepak Shah</div>
+            <div class="testi-role">Real Estate Developer, India</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I was skeptical about digital marketing at first, but WixFox completely changed my mind. They redesigned our landing page and our conversion rate jumped by 220% in six weeks. Outstanding!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#1ABC9C,#1A6FD4)">NR</div>
+          <div>
+            <div class="testi-name">Neha Rao</div>
+            <div class="testi-role">SaaS Founder, Bangalore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Working with Akash feels like having a digital expert in-house. He proactively suggests improvements, reports clearly, and the results speak for themselves. Our brand awareness doubled.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E91E63,#9B59B6)">LC</div>
+          <div>
+            <div class="testi-name">Lena Chen</div>
+            <div class="testi-role">Fashion Brand Owner, Singapore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Our Google Ads were burning money before WixFox took over. Within the first month they cut our CPC by 45% and tripled our qualified leads. Genuinely one of the best decisions we made.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#FF6B00,#E67E22)">MV</div>
+          <div>
+            <div class="testi-name">Mohammed Vasim</div>
+            <div class="testi-role">Auto Dealer, UAE</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The video ads WixFox created for our product launch were jaw-dropping. They captured our brand perfectly and the campaigns generated 1,200+ orders in the first week. Total game changer!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#F39C12,#E74C3C)">PT</div>
+          <div>
+            <div class="testi-name">Priya Thakkar</div>
+            <div class="testi-role">D2C Beauty Brand, Mumbai</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I hired WixFox for just social media management but ended up getting an entire digital strategy. They are proactive, creative, and obsessed with delivering results. Could not recommend more highly.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#27AE60,#1A6FD4)">TM</div>
+          <div>
+            <div class="testi-name">Tom Mackenzie</div>
+            <div class="testi-role">Gym Owner, Australia</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox revamped our entire online store and the difference is night and day. Clean design, fast loading, and it converts beautifully. Our monthly revenue increased by 3x in four months.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#8E44AD,#3498DB)">KS</div>
+          <div>
+            <div class="testi-name">Kavita Sharma</div>
+            <div class="testi-role">Jewellery Store Owner, Surat</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">As a startup with a tight budget, I needed a team that was honest and efficient. WixFox delivered a world-class website and Facebook campaign that got us our first 500 customers. Incredible value!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#16A085,#F39C12)">RO</div>
+          <div>
+            <div class="testi-name">Richard Osei</div>
+            <div class="testi-role">Fintech Startup, Ghana</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">From our first call, Akash understood exactly what our coaching business needed. The funnel they built now runs on autopilot and brings us 40–50 qualified leads weekly. WixFox is simply the best!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--blue),#9B59B6)">VN</div>
+          <div>
+            <div class="testi-name">Vijay Nair</div>
+            <div class="testi-role">Business Coach, Kerala</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Duplicates for infinite scroll ── -->
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox transformed our online presence completely. Within 3 months, our website traffic doubled and our sales skyrocketed. Akash and the team are genuinely invested in your growth.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--orange),var(--orange-light))">RK</div>
+          <div>
+            <div class="testi-name">Rahul Kumar</div>
+            <div class="testi-role">E-commerce Store Owner, USA</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The paid ads campaigns WixFox ran for us delivered a 4x return on our investment. Their team is responsive, professional, and truly understands what businesses need to grow digitally.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue))">SM</div>
+          <div>
+            <div class="testi-name">Sarah Mitchell</div>
+            <div class="testi-role">Founder, Health Brand, UK</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Incredible graphic design work and social media management. Our Instagram engagement went from almost nothing to thousands of genuine followers who actually buy from us!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#2EA043,#1A6FD4)">AP</div>
+          <div>
+            <div class="testi-name">Arun Patel</div>
+            <div class="testi-role">Restaurant Owner, India</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox built us a stunning website and then backed it up with an SEO strategy that actually works. We now rank on the first page of Google for our key terms. Absolutely brilliant!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#9B59B6,#1A6FD4)">JW</div>
+          <div>
+            <div class="testi-name">James Wilson</div>
+            <div class="testi-role">Tech Startup CEO, Canada</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The lead generation campaigns have been a game changer. We now get 60+ hot leads every single month. The ROI speaks for itself — WixFox is worth every penny.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E67E22,var(--orange))">DS</div>
+          <div>
+            <div class="testi-name">Deepak Shah</div>
+            <div class="testi-role">Real Estate Developer, India</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I was skeptical about digital marketing at first, but WixFox completely changed my mind. They redesigned our landing page and our conversion rate jumped by 220% in six weeks. Outstanding!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#1ABC9C,#1A6FD4)">NR</div>
+          <div>
+            <div class="testi-name">Neha Rao</div>
+            <div class="testi-role">SaaS Founder, Bangalore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Working with Akash feels like having a digital expert in-house. He proactively suggests improvements, reports clearly, and the results speak for themselves. Our brand awareness doubled.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E91E63,#9B59B6)">LC</div>
+          <div>
+            <div class="testi-name">Lena Chen</div>
+            <div class="testi-role">Fashion Brand Owner, Singapore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Our Google Ads were burning money before WixFox took over. Within the first month they cut our CPC by 45% and tripled our qualified leads. Genuinely one of the best decisions we made.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#FF6B00,#E67E22)">MV</div>
+          <div>
+            <div class="testi-name">Mohammed Vasim</div>
+            <div class="testi-role">Auto Dealer, UAE</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The video ads WixFox created for our product launch were jaw-dropping. They captured our brand perfectly and the campaigns generated 1,200+ orders in the first week. Total game changer!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#F39C12,#E74C3C)">PT</div>
+          <div>
+            <div class="testi-name">Priya Thakkar</div>
+            <div class="testi-role">D2C Beauty Brand, Mumbai</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I hired WixFox for just social media management but ended up getting an entire digital strategy. They are proactive, creative, and obsessed with delivering results. Could not recommend more highly.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#27AE60,#1A6FD4)">TM</div>
+          <div>
+            <div class="testi-name">Tom Mackenzie</div>
+            <div class="testi-role">Gym Owner, Australia</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox revamped our entire online store and the difference is night and day. Clean design, fast loading, and it converts beautifully. Our monthly revenue increased by 3x in four months.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#8E44AD,#3498DB)">KS</div>
+          <div>
+            <div class="testi-name">Kavita Sharma</div>
+            <div class="testi-role">Jewellery Store Owner, Surat</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">As a startup with a tight budget, I needed a team that was honest and efficient. WixFox delivered a world-class website and Facebook campaign that got us our first 500 customers. Incredible value!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#16A085,#F39C12)">RO</div>
+          <div>
+            <div class="testi-name">Richard Osei</div>
+            <div class="testi-role">Fintech Startup, Ghana</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">From our first call, Akash understood exactly what our coaching business needed. The funnel they built now runs on autopilot and brings us 40–50 qualified leads weekly. WixFox is simply the best!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--blue),#9B59B6)">VN</div>
+          <div>
+            <div class="testi-name">Vijay Nair</div>
+            <div class="testi-role">Business Coach, Kerala</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-content">
+    <div class="section-label reveal" style="justify-content:center">
+      <span style="width:30px;height:2px;background:var(--orange);display:inline-block"></span>
+      Let's Work Together
+      <span style="width:30px;height:2px;background:var(--orange);display:inline-block"></span>
+    </div>
+    <h2 class="cta-title reveal">Let's Grow Your<br><span>Business Together</span></h2>
+    <p class="cta-sub reveal">Get in touch today for a free consultation. Let's build your digital success story together.</p>
+    <div class="cta-buttons reveal">
+      <a href="tel:+918511083277" class="btn-primary">📞 Call Now</a>
+      <a href="mailto:founder@wixfox.com" class="btn-secondary">✉️ Send Email</a>
+    </div>
+    <div class="cta-contact-grid cta-contact-grid--4 reveal">
+      <a href="tel:+918511083277" class="cta-contact-item">
+        <div class="cta-contact-icon">📞</div>
+        <div class="cta-contact-label">Phone</div>
+        <div class="cta-contact-val">+91 85110 83277</div>
+      </a>
+      <a href="mailto:founder@wixfox.com" class="cta-contact-item">
+        <div class="cta-contact-icon">✉️</div>
+        <div class="cta-contact-label">Email</div>
+        <div class="cta-contact-val">founder@wixfox.com</div>
+      </a>
+      <a href="https://wa.me/919724225971?text=Hi%20WixFox!%20I%27m%20interested%20in%20your%20services." target="_blank" class="cta-contact-item cta-contact-item--wa">
+        <div class="cta-contact-icon">💬</div>
+        <div class="cta-contact-label">WhatsApp</div>
+        <div class="cta-contact-val">+91 97242 25971</div>
+      </a>
+      <a href="https://www.wixfox.com" target="_blank" class="cta-contact-item">
+        <div class="cta-contact-icon">🌐</div>
+        <div class="cta-contact-label">Website</div>
+        <div class="cta-contact-val">www.wixfox.com</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--orange),var(--blue));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px">🦊</div>
+        <div>
+          <div class="footer-brand-title">Wix<span>Fox</span></div>
+          <div style="font-size:11px;color:var(--gray);letter-spacing:1px">DIGITAL SOLUTIONS</div>
+        </div>
+      </div>
+      <p class="footer-brand-desc" style="margin-top:20px">A results-driven digital agency helping businesses scale online with powerful strategies, modern websites, and result-driven marketing solutions. From Idea to Impact — We Make It Happen!</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-btn">📘</a>
+        <a href="#" class="footer-social-btn">📷</a>
+        <a href="#" class="footer-social-btn">💼</a>
+        <a href="#" class="footer-social-btn">▶️</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Website Development</a></li>
+        <li><a href="#services">Digital Marketing</a></li>
+        <li><a href="#services">Paid Advertising</a></li>
+        <li><a href="#services">Video Editing</a></li>
+        <li><a href="#services">Graphic Design</a></li>
+        <li><a href="#services">Lead Generation</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#why">Why WixFox</a></li>
+        <li><a href="#results">Portfolio</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#cta">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links" style="gap:18px">
+        <li><a href="tel:+918511083277" style="flex-direction:column;align-items:flex-start;gap:2px"><span style="color:var(--orange);font-size:11px">PHONE</span><span style="color:var(--white);font-size:14px">+91 85110 83277</span></a></li>
+        <li><a href="mailto:founder@wixfox.com" style="flex-direction:column;align-items:flex-start;gap:2px"><span style="color:var(--orange);font-size:11px">EMAIL</span><span style="color:var(--white);font-size:14px">founder@wixfox.com</span></a></li>
+        <li><a href="https://wa.me/919724225971" target="_blank" style="flex-direction:column;align-items:flex-start;gap:2px"><span style="color:#25D366;font-size:11px">WHATSAPP</span><span style="color:var(--white);font-size:14px">+91 97242 25971</span></a></li>
+        <li><a href="https://www.wixfox.com" style="flex-direction:column;align-items:flex-start;gap:2px"><span style="color:var(--orange);font-size:11px">WEBSITE</span><span style="color:var(--white);font-size:14px">www.wixfox.com</span></a></li>
+      </ul>
+      <div style="margin-top:28px;background:linear-gradient(135deg,var(--orange),var(--blue));padding:16px 20px;border-radius:16px;text-align:center">
+        <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-bottom:4px">Founder</div>
+        <div style="font-weight:700;font-size:16px">Akash Upadhyay</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7)">WixFox Digital Solutions</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 <span>WixFox Digital Solutions</span>. All rights reserved.</div>
+    <div>Built with ❤️ by <span>WixFox</span> — Scaling Businesses Digitally 🚀</div>
+  </div>
+</footer>
+
+<script>
+  // Custom Cursor
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+  function animRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top = ringY + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a,button,.service-card,.why-reason').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width='28px'; cursor.style.height='28px'; cursorRing.style.width='60px'; cursorRing.style.height='60px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width='18px'; cursor.style.height='18px'; cursorRing.style.width='40px'; cursorRing.style.height='40px'; });
+  });
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Particles
+  const particlesContainer = document.getElementById('particles');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 6 + 2;
+    p.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*15+10}s;
+      animation-delay:${Math.random()*10}s;
+      background:${Math.random()>0.5?'var(--orange)':'var(--blue)'};
+    `;
+    particlesContainer.appendChild(p);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el, target, duration=2000) {
+    const start = performance.now();
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(update);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !e.target.dataset.animated) {
+        e.target.dataset.animated = true;
+        animateCounter(e.target, parseInt(e.target.dataset.target));
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║        WixFox Digital Solutions — .htaccess Security         ║
+# ║        Place this file in your website root directory        ║
+# ╚══════════════════════════════════════════════════════════════╝
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 1. FORCE HTTPS — Redirect all HTTP traffic to HTTPS
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Force www (remove if you prefer non-www)
+    # RewriteCond %{HTTP_HOST} !^www\. [NC]
+    # RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Redirect index.html to root (cleaner URLs)
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+index\.html [NC]
+    RewriteRule ^ / [R=301,L]
+</IfModule>
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 2. SECURITY HEADERS
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<IfModule mod_headers.c>
+
+    # Strict Transport Security — force HTTPS for 1 year
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Prevent clickjacking attacks
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Control referrer information
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Restrict browser features / permissions
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+
+    # Content Security Policy — allows WhatsApp, Google Fonts, CDNs used by WixFox
+    Header always set Content-Security-Policy "default-src 'self'; \
+        script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; \
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; \
+        font-src 'self' https://fonts.gstatic.com; \
+        img-src 'self' data: https:; \
+        connect-src 'self' https://wa.me https://api.whatsapp.com; \
+        frame-ancestors 'self'; \
+        base-uri 'self'; \
+        form-action 'self' https://wa.me"
+
+    # Remove server signature from headers
+    Header always unset X-Powered-By
+    Header always unset Server
+
+</IfModule>
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 3. BLOCK SENSITIVE FILES & DIRECTORIES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Block access to .htaccess itself and other dot-files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to SSL certificates and private keys
+<FilesMatch "\.(pem|key|crt|csr|p12|pfx)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to backup and config files
+<FilesMatch "\.(bak|backup|old|orig|sql|conf|config|log|sh|bash|env|json|lock|yml|yaml|md|txt|git)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Allow access to specific safe text/json files if needed
+<FilesMatch "^(robots\.txt|sitemap\.xml|manifest\.json|browserconfig\.xml)$">
+    Order deny,allow
+    Allow from all
+</FilesMatch>
+
+# Block access to ssl/ directory
+<IfModule mod_rewrite.c>
+    RewriteRule ^ssl/ - [F,L]
+    RewriteRule ^node_modules/ - [F,L]
+    RewriteRule ^\.git/ - [F,L]
+</IfModule>
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 4. DISABLE DIRECTORY LISTING
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Options -Indexes -ExecCGI -Includes
+Options +FollowSymLinks
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 5. BLOCK BAD BOTS & MALICIOUS USER AGENTS
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_USER_AGENT} (havij|libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader|email|harvest|extract|grab|miner) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (zmeu|dirbuster|nmap|masscan|sqlmap|acunetix|nessus|openvas) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 6. BLOCK SQL INJECTION & XSS ATTACKS IN URL
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<IfModule mod_rewrite.c>
+    RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} (union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
+    RewriteCond %{QUERY_STRING} \.\./\.\. [OR]
+    RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
+    RewriteCond %{QUERY_STRING} \.(pem|key|crt|sh|bash|env) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 7. BLOCK BAD REQUEST METHODS
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<LimitExcept GET POST HEAD>
+    Order deny,allow
+    Deny from all
+</LimitExcept>
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 8. PERFORMANCE — BROWSER CACHING
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML — no cache (always fresh)
+    ExpiresByType text/html                         "access plus 0 seconds"
+
+    # CSS & JavaScript — 1 week
+    ExpiresByType text/css                          "access plus 1 week"
+    ExpiresByType application/javascript            "access plus 1 week"
+
+    # Images — 1 month
+    ExpiresByType image/png                         "access plus 1 month"
+    ExpiresByType image/jpeg                        "access plus 1 month"
+    ExpiresByType image/gif                         "access plus 1 month"
+    ExpiresByType image/svg+xml                     "access plus 1 month"
+    ExpiresByType image/webp                        "access plus 1 month"
+    ExpiresByType image/x-icon                      "access plus 1 year"
+
+    # Fonts — 1 year
+    ExpiresByType font/woff                         "access plus 1 year"
+    ExpiresByType font/woff2                        "access plus 1 year"
+    ExpiresByType font/ttf                          "access plus 1 year"
+    ExpiresByType application/font-woff             "access plus 1 year"
+</IfModule>
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 9. PERFORMANCE — GZIP COMPRESSION
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE font/ttf
+</IfModule>
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 10. CUSTOM ERROR PAGES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ErrorDocument 400 /index.html
+ErrorDocument 401 /index.html
+ErrorDocument 403 /index.html
+ErrorDocument 404 /index.html
+ErrorDocument 500 /index.html
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 11. CHARSET & DEFAULT DOCUMENT
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AddDefaultCharset UTF-8
+DirectoryIndex index.html
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 12. LIMIT REQUEST SIZE (protect against large payload attacks)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LimitRequestBody 10485760

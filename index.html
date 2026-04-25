@@ -1,0 +1,2938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WixFox Digital Solutions – Scaling Businesses Digitally</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   WixFox Digital Solutions — Main Stylesheet
+   ============================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --orange: #FF6B00;
+  --orange-light: #FF8C35;
+  --orange-glow: rgba(255, 107, 0, 0.35);
+  --blue: #1A6FD4;
+  --blue-dark: #0D4FA0;
+  --blue-light: #4A9FE8;
+  --blue-glow: rgba(26, 111, 212, 0.35);
+  --dark: #0A0C10;
+  --dark2: #111318;
+  --dark3: #181C24;
+  --white: #FFFFFF;
+  --gray: #8A9BB5;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--orange);
+  border-radius: 3px;
+}
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor {
+  width: 18px;
+  height: 18px;
+  background: var(--orange);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: screen;
+}
+
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
+  opacity: 0.5;
+}
+
+/* ===== NOISE OVERLAY ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.5;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  background: rgba(10, 12, 16, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+
+nav.scrolled {
+  height: 62px;
+  background: rgba(10, 12, 16, 0.97);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--orange), var(--blue));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 0 20px var(--orange-glow);
+}
+
+.nav-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+
+.nav-logo-text span {
+  color: var(--orange);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--white);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  color: var(--white) !important;
+  padding: 10px 24px;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px var(--orange-glow);
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px var(--orange-glow) !important;
+}
+
+.nav-cta::after {
+  display: none !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 80px 5% 0;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 50%, rgba(26, 111, 212, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(255, 107, 0, 0.1) 0%, transparent 60%),
+    var(--dark);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 107, 0, 0.1);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange-light);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.2s both;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0.6; }
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 100px);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s 0.4s both;
+}
+
+.hero-title .line2 {
+  color: var(--orange);
+  text-shadow: 0 0 60px var(--orange-glow), 0 0 120px var(--orange-glow);
+  display: block;
+}
+
+.hero-title .line3 {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  color: transparent;
+  display: block;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--gray);
+  line-height: 1.8;
+  max-width: 500px;
+  margin-bottom: 44px;
+  animation: fadeUp 0.8s 0.6s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.8s both;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 8px 30px var(--orange-glow);
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px var(--orange-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-secondary:hover {
+  border-color: var(--blue);
+  background: rgba(26, 111, 212, 0.1);
+  transform: translateY(-3px);
+}
+
+/* ===== HERO VISUAL ===== */
+.hero-visual {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-fox-wrap {
+  position: relative;
+  animation: heroFloat 4s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-20px) rotate(1deg); }
+}
+
+.hero-fox-wrap img {
+  width: min(500px, 45vw);
+  filter: drop-shadow(0 20px 60px var(--orange-glow));
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(26, 111, 212, 0.15);
+  top: 10%;
+  right: 5%;
+}
+
+.orb2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 107, 0, 0.12);
+  bottom: 20%;
+  right: 25%;
+}
+
+/* ===== HERO STATS ===== */
+.hero-stats {
+  position: absolute;
+  bottom: 60px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  gap: 60px;
+  animation: fadeUp 0.8s 1s both;
+  z-index: 2;
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--orange);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--gray);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.stat-divider {
+  width: 1px;
+  background: var(--border);
+  align-self: stretch;
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeUp 1s 1.2s both;
+  z-index: 2;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--orange), transparent);
+  animation: scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse {
+  0%     { transform: scaleY(0); transform-origin: top; }
+  50%    { transform: scaleY(1); transform-origin: top; }
+  50.01% { transform: scaleY(1); transform-origin: bottom; }
+  100%   { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ===== TICKER ===== */
+.ticker-wrap {
+  background: linear-gradient(135deg, var(--orange), var(--blue));
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: ticker 25s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 3px;
+  padding: 0 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ticker-dot {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ===== SECTION COMMONS ===== */
+section {
+  padding: 120px 5%;
+  position: relative;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.section-title span {
+  color: var(--orange);
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--gray);
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+/* ===== ABOUT ===== */
+#about {
+  background: var(--dark2);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.about-image-stack {
+  position: relative;
+  height: 500px;
+}
+
+.about-img-main {
+  width: 75%;
+  height: 380px;
+  background: linear-gradient(135deg, var(--dark3), var(--dark2));
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-img-main img {
+  width: 90%;
+  filter: drop-shadow(0 10px 40px var(--orange-glow));
+}
+
+.about-img-float {
+  width: 50%;
+  height: 200px;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+  border-radius: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 20px 60px var(--blue-glow);
+}
+
+.about-img-float-inner {
+  text-align: center;
+  padding: 24px;
+}
+
+.about-img-float-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--white);
+}
+
+.about-img-float-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
+}
+
+.about-badge-float {
+  position: absolute;
+  bottom: 30px;
+  right: -20px;
+  background: var(--orange);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 8px 30px var(--orange-glow);
+  white-space: nowrap;
+}
+
+.about-features {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-feature {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+
+.about-feature:hover {
+  border-color: var(--orange);
+  background: rgba(255, 107, 0, 0.05);
+  transform: translateX(6px);
+}
+
+.about-feature-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px var(--orange-glow);
+}
+
+.about-feature-title {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.about-feature-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ===== SERVICES ===== */
+#services {
+  background: var(--dark);
+}
+
+.services-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 70px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--orange-glow), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 107, 0, 0.3);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card.blue-card::before {
+  background: linear-gradient(135deg, var(--blue-glow), transparent);
+}
+
+.service-card.blue-card:hover {
+  border-color: rgba(26, 111, 212, 0.4);
+}
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-icon.orange {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  box-shadow: 0 8px 30px var(--orange-glow);
+}
+
+.service-icon.blue {
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+  box-shadow: 0 8px 30px var(--blue-glow);
+}
+
+.service-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 11px;
+  color: var(--gray);
+  transition: all 0.3s;
+}
+
+.service-card:hover .service-tag {
+  border-color: rgba(255, 107, 0, 0.3);
+  color: var(--orange-light);
+}
+
+.service-card.blue-card:hover .service-tag {
+  border-color: rgba(26, 111, 212, 0.3);
+  color: var(--blue-light);
+}
+
+.service-arrow {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s;
+  z-index: 1;
+}
+
+.service-card:hover .service-arrow {
+  background: var(--orange);
+  border-color: var(--orange);
+  transform: rotate(45deg);
+}
+
+.service-card.blue-card:hover .service-arrow {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* ===== PROCESS ===== */
+#process {
+  background: var(--dark3);
+  overflow: hidden;
+}
+
+.process-timeline {
+  position: relative;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.process-line {
+  position: absolute;
+  top: 60px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(to right, var(--orange), var(--blue));
+  z-index: 0;
+}
+
+.process-step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.process-num-wrap {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 32px;
+  position: relative;
+}
+
+.process-num-ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark3);
+  position: relative;
+  z-index: 1;
+}
+
+.process-step:nth-child(even) .process-num-ring {
+  border-color: var(--blue);
+}
+
+.process-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: var(--orange);
+}
+
+.process-step:nth-child(even) .process-num {
+  color: var(--blue-light);
+}
+
+.process-icon {
+  font-size: 28px;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}
+
+.process-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.process-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+/* ===== WHY CHOOSE US ===== */
+#why {
+  background: var(--dark2);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.why-card-main {
+  background: linear-gradient(135deg, var(--dark3), var(--dark2));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-card-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--orange), var(--blue));
+}
+
+.why-big-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 90px;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--orange), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.why-card-label {
+  font-size: 14px;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+.why-card-desc {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+.why-floating-badge {
+  position: absolute;
+  background: var(--orange);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 8px 30px var(--orange-glow);
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+
+.why-floating-badge.badge1 {
+  top: -20px;
+  right: 20px;
+  animation-delay: 0s;
+}
+
+.why-floating-badge.badge2 {
+  bottom: -20px;
+  left: 20px;
+  background: var(--blue);
+  box-shadow: 0 8px 30px var(--blue-glow);
+  animation-delay: 1.5s;
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+.why-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.why-reason {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 20px 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+
+.why-reason:hover {
+  border-color: var(--orange);
+  transform: translateX(8px);
+}
+
+.why-reason-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.why-reason:nth-child(odd) .why-reason-icon {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  box-shadow: 0 4px 20px var(--orange-glow);
+}
+
+.why-reason:nth-child(even) .why-reason-icon {
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+  box-shadow: 0 4px 20px var(--blue-glow);
+}
+
+.why-reason-title {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.why-reason-desc {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+/* ===== PORTFOLIO / RESULTS ===== */
+#results {
+  background: var(--dark);
+  overflow: hidden;
+}
+
+.results-intro {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.results-intro .section-label {
+  justify-content: center;
+}
+
+.results-intro .section-label::before {
+  display: none;
+}
+
+.results-intro .section-label::after {
+  content: '';
+  width: 30px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.result-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.result-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 107, 0, 0.3);
+}
+
+.result-card-top {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card-visual {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+}
+
+.result-card-visual.v1 { background: linear-gradient(135deg, #0D1B2A, #1A6FD4); }
+.result-card-visual.v2 { background: linear-gradient(135deg, #1A0A00, #FF6B00); }
+.result-card-visual.v3 { background: linear-gradient(135deg, #0A1A0D, #2EA043); }
+.result-card-visual.v4 { background: linear-gradient(135deg, #1A001A, #9B59B6); }
+.result-card-visual.v5 { background: linear-gradient(135deg, #1A0D00, #E67E22); }
+.result-card-visual.v6 { background: linear-gradient(135deg, #001A1A, #1ABC9C); }
+
+.result-stat-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange-light);
+}
+
+.result-card-body {
+  padding: 24px;
+}
+
+.result-category {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.result-title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.result-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ===== TESTIMONIALS ===== */
+#testimonials {
+  background: var(--dark3);
+  overflow: hidden;
+}
+
+.testimonials-intro {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.testimonials-intro .section-label {
+  justify-content: center;
+}
+
+.testimonials-intro .section-label::before {
+  display: none;
+}
+
+.testimonials-intro .section-label::after {
+  content: '';
+  width: 30px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.testimonials-track-wrap {
+  overflow: hidden;
+  margin: 0 -5%;
+  padding: 0 5%;
+}
+
+.testimonials-track {
+  display: flex;
+  gap: 24px;
+  animation: slideTrack 30s linear infinite;
+}
+
+.testimonials-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slideTrack {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.testi-card {
+  min-width: 380px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.testi-quote {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  color: var(--orange);
+  opacity: 0.2;
+  line-height: 0.6;
+  margin-bottom: 20px;
+}
+
+.testi-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.testi-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
+  font-family: 'Bebas Neue', sans-serif;
+  flex-shrink: 0;
+}
+
+.testi-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.testi-role {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.testi-stars {
+  color: var(--orange);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* ===== CTA SECTION ===== */
+#cta {
+  background: var(--dark2);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 7vw, 90px);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.cta-title span {
+  color: var(--orange);
+}
+
+.cta-sub {
+  font-size: 17px;
+  color: var(--gray);
+  max-width: 550px;
+  margin: 0 auto 48px;
+  line-height: 1.8;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 700px;
+  margin: 60px auto 0;
+}
+
+.cta-contact-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.cta-contact-item:hover {
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+
+.cta-contact-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.cta-contact-label {
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.cta-contact-val {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===== WHATSAPP POPUP CHAT BUTTON ===== */
+.wa-popup-wrap {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Trigger button ── */
+.wa-chat-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 22px 14px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+  animation: waBounceIn 0.7s 1.2s both;
+}
+
+.wa-chat-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(37, 211, 102, 0.55);
+  background: #20c05c;
+}
+
+.wa-chat-btn--active {
+  background: #128C7E;
+  box-shadow: 0 6px 28px rgba(18, 140, 126, 0.45);
+}
+
+.wa-btn-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.wa-btn-text {
+  white-space: nowrap;
+}
+
+.wa-btn-pulse {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50px;
+  background: rgba(37, 211, 102, 0.3);
+  animation: waPulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes waPulse {
+  0%   { transform: scale(1);    opacity: 0.8; }
+  70%  { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(1.08); opacity: 0; }
+}
+
+@keyframes waBounceIn {
+  from { opacity: 0; transform: scale(0.5) translateY(30px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Popup card ── */
+.wa-popup-card {
+  width: 320px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 60px rgba(0,0,0,0.25);
+  transform: scale(0.85) translateY(20px);
+  transform-origin: bottom right;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s ease;
+}
+
+.wa-popup-card--open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.wa-popup-header {
+  background: #075E54;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wa-popup-avatar {
+  width: 46px;
+  height: 46px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.wa-popup-online {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 12px;
+  height: 12px;
+  background: #25D366;
+  border: 2px solid #075E54;
+  border-radius: 50%;
+}
+
+.wa-popup-info {
+  flex: 1;
+}
+
+.wa-popup-name {
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.wa-popup-status {
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.wa-popup-close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.wa-popup-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.wa-popup-body {
+  background: #ECE5DD;
+  padding: 20px 16px;
+}
+
+.wa-popup-bubble {
+  background: #fff;
+  border-radius: 0 14px 14px 14px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  color: #111;
+  line-height: 1.7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.wa-popup-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -8px;
+  border-width: 0 8px 8px 0;
+  border-style: solid;
+  border-color: transparent #fff transparent transparent;
+}
+
+.wa-popup-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 16px;
+  transition: background 0.2s;
+}
+
+.wa-popup-cta:hover {
+  background: #20c05c;
+}
+
+@media (max-width: 768px) {
+  .wa-popup-wrap {
+    bottom: 18px;
+    right: 16px;
+  }
+
+  .wa-popup-card {
+    width: 290px;
+  }
+
+  .wa-chat-btn {
+    padding: 12px 18px 12px 15px;
+    font-size: 14px;
+  }
+}
+
+/* ===== WHATSAPP HERO BUTTON ===== */
+.btn-whatsapp {
+  background: #25D366;
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(37, 211, 102, 0.45);
+  background: #1ebe5d;
+}
+
+/* ===== CTA 4-COLUMN CONTACT GRID ===== */
+.cta-contact-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 920px;
+}
+
+.cta-contact-item--wa {
+  border-color: rgba(37, 211, 102, 0.2);
+}
+
+.cta-contact-item--wa:hover {
+  border-color: #25D366;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.2);
+}
+
+@media (max-width: 768px) {
+  .cta-contact-grid--4 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wa-float-wrap {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .wa-float-btn {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #060709;
+  padding: 80px 5% 40px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-brand-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin: 16px 0 12px;
+}
+
+.footer-brand-title span {
+  color: var(--orange);
+}
+
+.footer-brand-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  max-width: 280px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.footer-social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-social-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  transform: translateY(-3px);
+}
+
+.footer-col-title {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+
+.footer-col-title::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--orange);
+  margin-top: 8px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links a::before {
+  content: '›';
+  color: var(--orange);
+}
+
+.footer-links a:hover {
+  color: var(--white);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.footer-bottom span {
+  color: var(--orange);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== COUNTER ===== */
+.counter {
+  display: inline-block;
+}
+
+/* ===== FLOATING PARTICLES ===== */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--orange);
+  opacity: 0.15;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0%   { transform: translateY(100vh) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.15; }
+  90%  { opacity: 0.15; }
+  100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+}
+
+/* ===== MOBILE NAV MENU ===== */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 16, 0.98);
+  z-index: 850;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  letter-spacing: 3px;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mobile-menu a:hover {
+  color: var(--orange);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .services-grid  { grid-template-columns: repeat(2, 1fr); }
+  .results-grid   { grid-template-columns: repeat(2, 1fr); }
+  .footer-top     { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links              { display: none; }
+  .hamburger              { display: flex; }
+  .hero-visual            { display: none; }
+  .hero-content           { max-width: 100%; }
+  .hero-stats             { gap: 30px; flex-wrap: wrap; }
+  .about-grid, .why-grid  { grid-template-columns: 1fr; }
+  .about-image-stack      { height: 300px; }
+  .process-timeline       { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .process-line           { display: none; }
+  .services-grid,
+  .results-grid,
+  .cta-contact-grid       { grid-template-columns: 1fr; }
+  .services-intro         { flex-direction: column; gap: 20px; align-items: flex-start; }
+  .footer-top             { grid-template-columns: 1fr; }
+  .footer-bottom          { flex-direction: column; gap: 12px; text-align: center; }
+  .testi-card             { min-width: 300px; }
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- WhatsApp Popup Chat Button -->
+<div class="wa-popup-wrap" id="waPopupWrap">
+
+  <!-- Popup Card -->
+  <div class="wa-popup-card" id="waPopupCard">
+    <div class="wa-popup-header">
+      <div class="wa-popup-avatar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="wa-popup-online"></span>
+      </div>
+      <div class="wa-popup-info">
+        <div class="wa-popup-name">WixFox Digital</div>
+        <div class="wa-popup-status">🟢 Online — Typically replies instantly</div>
+      </div>
+      <button class="wa-popup-close" onclick="closeWaPopup()" aria-label="Close">✕</button>
+    </div>
+    <div class="wa-popup-body">
+      <div class="wa-popup-bubble">
+        👋 Hi there! Welcome to <strong>WixFox Digital Solutions</strong>.<br><br>
+        How can we help you grow your business today? Click below to start chatting!
+      </div>
+    </div>
+    <a href="https://wa.me/919724225971?text=Hi%20WixFox!%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20your%20digital%20services." target="_blank" class="wa-popup-cta">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="18" height="18">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Start Chat on WhatsApp
+    </a>
+  </div>
+
+  <!-- Trigger Button -->
+  <button class="wa-chat-btn" id="waChatBtn" onclick="toggleWaPopup()" aria-label="Chat on WhatsApp">
+    <span class="wa-btn-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </span>
+    <span class="wa-btn-text">Chat Now</span>
+    <span class="wa-btn-pulse"></span>
+  </button>
+
+</div>
+
+<script>
+  function toggleWaPopup() {
+    const card = document.getElementById('waPopupCard');
+    const btn  = document.getElementById('waChatBtn');
+    const open = card.classList.toggle('wa-popup-card--open');
+    btn.classList.toggle('wa-chat-btn--active', open);
+  }
+  function closeWaPopup() {
+    document.getElementById('waPopupCard').classList.remove('wa-popup-card--open');
+    document.getElementById('waChatBtn').classList.remove('wa-chat-btn--active');
+  }
+  // auto-open after 4 seconds
+  setTimeout(() => {
+    document.getElementById('waPopupCard').classList.add('wa-popup-card--open');
+    document.getElementById('waChatBtn').classList.add('wa-chat-btn--active');
+  }, 4000);
+</script>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMobileMenu()">Home</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#process" onclick="closeMobileMenu()">Process</a>
+  <a href="#why" onclick="closeMobileMenu()">Why Us</a>
+  <a href="#cta" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">🦊</div>
+    <div class="nav-logo-text">Wix<span>Fox</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#cta" class="nav-cta">Get Started</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🚀 Digital Growth Agency</div>
+    <h1 class="hero-title">
+      Scaling<br>
+      <span class="line2">Businesses</span>
+      <span class="line3">Digitally</span>
+    </h1>
+    <p class="hero-sub">Powerful strategies. Creative solutions. Real results. WixFox Digital Solutions helps your brand dominate the digital landscape with precision and creativity.</p>
+    <div class="hero-buttons">
+      <a href="#cta" class="btn-primary">🦊 Free Consultation</a>
+      <a href="#services" class="btn-secondary">Our Services →</a>
+      <a href="https://wa.me/919724225971?text=Hi%20WixFox!%20I%27m%20interested%20in%20your%20digital%20services." target="_blank" class="btn-whatsapp">💬 WhatsApp Us</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-fox-wrap">
+      <img src="https://i.imgur.com/placeholder.png" alt="WixFox" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'font-size:200px;filter:drop-shadow(0 20px 60px rgba(255,107,0,0.4))\'>🦊</div>'">
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num"><span class="counter" data-target="150">0</span>+</div>
+      <div class="stat-label">Clients Served</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="counter" data-target="300">0</span>+</div>
+      <div class="stat-label">Projects Delivered</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="counter" data-target="5">0</span>+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="counter" data-target="98">0</span>%</div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="ticker-item">Website Development <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Digital Marketing <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Paid Advertising <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Video Editing <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Graphic Design <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Lead Generation <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">SEO Optimization <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Social Media <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Brand Growth <span class="ticker-dot">◆</span></div>
+    <!-- duplicate for infinite loop -->
+    <div class="ticker-item">Website Development <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Digital Marketing <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Paid Advertising <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Video Editing <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Graphic Design <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Lead Generation <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">SEO Optimization <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Social Media <span class="ticker-dot">◆</span></div>
+    <div class="ticker-item">Brand Growth <span class="ticker-dot">◆</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-stack reveal-left">
+      <div class="about-img-main">
+        <div style="text-align:center;padding:30px">
+          <div style="font-size:120px;filter:drop-shadow(0 10px 30px rgba(255,107,0,0.4))">🦊</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange);letter-spacing:2px">WixFox Digital Solutions</div>
+          <div style="font-size:13px;color:var(--gray);margin-top:8px">From Idea to Impact – We Make It Happen!</div>
+        </div>
+      </div>
+      <div class="about-img-float">
+        <div class="about-img-float-inner">
+          <div class="about-img-float-num">5★</div>
+          <div class="about-img-float-text">Rating</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:6px">USA & Global Clients</div>
+        </div>
+      </div>
+      <div class="about-badge-float">🚀 Trusted Worldwide</div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-label">About WixFox</div>
+      <h2 class="section-title">We Are Your <span>Digital Growth</span> Partner</h2>
+      <p class="section-sub">WixFox Digital Solutions is a results-driven digital agency dedicated to helping businesses build a strong online presence, attract more customers, and achieve massive growth. We combine creativity, technology, and strategy to deliver solutions that drive real results.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="about-feature-icon">🎯</div>
+          <div>
+            <div class="about-feature-title">Results-Driven Approach</div>
+            <div class="about-feature-desc">Every strategy we build is laser-focused on your growth metrics — traffic, leads, and conversions that actually matter to your bottom line.</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">💡</div>
+          <div>
+            <div class="about-feature-title">Creative & Innovative</div>
+            <div class="about-feature-desc">We don't do cookie-cutter. From branding to ads, every piece of content is crafted uniquely to make your brand stand out in a crowded market.</div>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">🌍</div>
+          <div>
+            <div class="about-feature-title">Global Experience</div>
+            <div class="about-feature-desc">Trusted by clients in the USA and across the globe, we bring world-class digital expertise tailored to your local and international goals.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our <span>Services</span></h2>
+    </div>
+    <p style="font-size:15px;color:var(--gray);max-width:360px;line-height:1.8">Everything your business needs to succeed online — under one roof, delivered with excellence.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon orange">🌐</div>
+      <div class="service-title">Website Development</div>
+      <div class="service-desc">Professional, responsive, SEO-friendly websites that convert visitors into customers. From landing pages to full e-commerce stores.</div>
+      <div class="service-tags">
+        <span class="service-tag">Business Sites</span>
+        <span class="service-tag">E-commerce</span>
+        <span class="service-tag">Landing Pages</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card blue-card reveal" style="transition-delay:0.1s">
+      <div class="service-icon blue">📣</div>
+      <div class="service-title">Digital Marketing</div>
+      <div class="service-desc">Grow your brand with powerful SEO, social media management, and data-driven strategies that put you ahead of the competition.</div>
+      <div class="service-tags">
+        <span class="service-tag">SEO</span>
+        <span class="service-tag">Social Media</span>
+        <span class="service-tag">Brand Growth</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.2s">
+      <div class="service-icon orange">📊</div>
+      <div class="service-title">Paid Ads Management</div>
+      <div class="service-desc">High-converting Facebook, Instagram, and Google Ads campaigns engineered for maximum ROI and qualified lead generation.</div>
+      <div class="service-tags">
+        <span class="service-tag">Facebook Ads</span>
+        <span class="service-tag">Google Ads</span>
+        <span class="service-tag">Instagram Ads</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card blue-card reveal" style="transition-delay:0.3s">
+      <div class="service-icon blue">🎬</div>
+      <div class="service-title">Video Editing & Ads Video</div>
+      <div class="service-desc">Engaging promotional videos, ad creatives, reels, and shorts that capture attention and drive action in seconds.</div>
+      <div class="service-tags">
+        <span class="service-tag">Promo Videos</span>
+        <span class="service-tag">Ad Creatives</span>
+        <span class="service-tag">Reels & Shorts</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:0.4s">
+      <div class="service-icon orange">🎨</div>
+      <div class="service-title">Graphic Design</div>
+      <div class="service-desc">Creative designs for social media posts, banners, brochures, and full brand identity that leaves a lasting impression.</div>
+      <div class="service-tags">
+        <span class="service-tag">Social Posts</span>
+        <span class="service-tag">Banners</span>
+        <span class="service-tag">Branding</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card blue-card reveal" style="transition-delay:0.5s">
+      <div class="service-icon blue">🎯</div>
+      <div class="service-title">Lead Generation</div>
+      <div class="service-desc">Targeted lead campaigns, email & CRM integration, and quality leads that convert — fueling sustainable business growth.</div>
+      <div class="service-tags">
+        <span class="service-tag">Lead Campaigns</span>
+        <span class="service-tag">CRM</span>
+        <span class="service-tag">Email Marketing</span>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div style="text-align:center;margin-bottom:0">
+    <div class="section-label reveal" style="justify-content:center">
+      <span style="width:30px;height:2px;background:var(--orange);display:inline-block"></span>
+      How We Work
+      <span style="width:30px;height:2px;background:var(--orange);display:inline-block"></span>
+    </div>
+    <h2 class="section-title reveal">Our <span>4-Step</span> Process</h2>
+    <p class="section-sub reveal" style="margin:0 auto;text-align:center">From Idea to Impact — a proven process that delivers extraordinary results every single time.</p>
+  </div>
+  <div class="process-timeline">
+    <div class="process-line"></div>
+    <div class="process-step reveal">
+      <div class="process-num-wrap">
+        <div class="process-num-ring">
+          <div class="process-num">01</div>
+        </div>
+        <div class="process-icon">🔍</div>
+      </div>
+      <div class="process-title">Understand Your Business</div>
+      <div class="process-desc">We dive deep into your goals, target audience, competitors, and market to build a complete picture of what success looks like for you.</div>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.15s">
+      <div class="process-num-wrap">
+        <div class="process-num-ring">
+          <div class="process-num">02</div>
+        </div>
+        <div class="process-icon">📋</div>
+      </div>
+      <div class="process-title">Strategy Planning</div>
+      <div class="process-desc">A custom digital strategy is crafted — covering channels, timelines, content, and KPIs — aligned perfectly with your business objectives.</div>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.3s">
+      <div class="process-num-wrap">
+        <div class="process-num-ring">
+          <div class="process-num">03</div>
+        </div>
+        <div class="process-icon">⚙️</div>
+      </div>
+      <div class="process-title">Execution & Optimization</div>
+      <div class="process-desc">We launch, monitor, test, and continuously optimize every campaign and asset for peak performance and maximum ROI.</div>
+    </div>
+    <div class="process-step reveal" style="transition-delay:0.45s">
+      <div class="process-num-wrap">
+        <div class="process-num-ring">
+          <div class="process-num">04</div>
+        </div>
+        <div class="process-icon">📈</div>
+      </div>
+      <div class="process-title">Growth & Scaling</div>
+      <div class="process-desc">With proven results in hand, we scale what works — turning good campaigns into great ones and steadily growing your digital footprint.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-visual reveal-left">
+      <div class="why-card-main">
+        <div style="font-size:40px;margin-bottom:16px">🦊</div>
+        <div class="why-big-text">WHY<br>WIXFOX?</div>
+        <div class="why-card-label">The Smart Choice for Digital Growth</div>
+        <div class="why-card-desc">We don't just run campaigns — we become your dedicated digital growth partner, invested in your success as much as you are. Every decision we make is backed by data and driven by results.</div>
+        <div style="margin-top:32px;padding:20px;background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.2);border-radius:14px;font-size:14px;font-style:italic;color:rgba(255,255,255,0.8)">
+          "From Idea to Impact — We Make It Happen!" 🚀
+        </div>
+      </div>
+      <div class="why-floating-badge badge1">⭐ Premium Quality</div>
+      <div class="why-floating-badge badge2">🌍 Global Clients</div>
+    </div>
+    <div class="why-reasons reveal-right">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title" style="margin-bottom:32px">5 Reasons to <span>Choose WixFox</span></h2>
+      <div class="why-reason">
+        <div class="why-reason-icon">🎯</div>
+        <div>
+          <div class="why-reason-title">Result-Oriented Approach</div>
+          <div class="why-reason-desc">We focus on what matters most — your growth. Every action, campaign, and creative is tied to measurable outcomes.</div>
+        </div>
+      </div>
+      <div class="why-reason">
+        <div class="why-reason-icon">💰</div>
+        <div>
+          <div class="why-reason-title">Affordable Pricing</div>
+          <div class="why-reason-desc">Premium services without the premium price tag. We believe great digital marketing should be accessible to all businesses.</div>
+        </div>
+      </div>
+      <div class="why-reason">
+        <div class="why-reason-icon">⚡</div>
+        <div>
+          <div class="why-reason-title">Fast & On-Time Delivery</div>
+          <div class="why-reason-desc">We respect your time. Projects are delivered on schedule, without compromising on quality or attention to detail.</div>
+        </div>
+      </div>
+      <div class="why-reason">
+        <div class="why-reason-icon">🤝</div>
+        <div>
+          <div class="why-reason-title">Dedicated Support</div>
+          <div class="why-reason-desc">We're always here when you need us. A dedicated team ready to assist, advise, and act on your behalf at all times.</div>
+        </div>
+      </div>
+      <div class="why-reason">
+        <div class="why-reason-icon">🌐</div>
+        <div>
+          <div class="why-reason-title">USA & Global Experience</div>
+          <div class="why-reason-desc">Trusted by clients in the USA and worldwide, bringing global strategies that work in any market.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="results-intro">
+    <div class="section-label">Our Portfolio</div>
+    <h2 class="section-title">Real <span>Results</span> We Deliver</h2>
+    <p class="section-sub" style="margin:0 auto">Proven outcomes across industries — from local businesses to global brands.</p>
+  </div>
+  <div class="results-grid">
+    <div class="result-card reveal">
+      <div class="result-card-top">
+        <div class="result-card-visual v1">🏪</div>
+        <div class="result-stat-badge">+340% ROI</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">E-Commerce</div>
+        <div class="result-title">Online Store — USA Market</div>
+        <div class="result-desc">Built a full e-commerce website with Facebook & Google Ads, achieving 340% ROI in 3 months through targeted campaigns.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.1s">
+      <div class="result-card-top">
+        <div class="result-card-visual v2">🍕</div>
+        <div class="result-stat-badge">5x Leads</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">Food & Beverage</div>
+        <div class="result-title">Restaurant Chain — Social Media</div>
+        <div class="result-desc">Social media management + Instagram Reels strategy multiplied their local leads by 5x and drove massive foot traffic.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.2s">
+      <div class="result-card-top">
+        <div class="result-card-visual v3">💊</div>
+        <div class="result-stat-badge">2.1x Sales</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">Healthcare</div>
+        <div class="result-title">Health Supplement Brand</div>
+        <div class="result-desc">Landing page redesign + Google Ads optimization doubled their online sales while reducing cost per acquisition by 38%.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.3s">
+      <div class="result-card-top">
+        <div class="result-card-visual v4">🎓</div>
+        <div class="result-stat-badge">+800 Enrolments</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">Education</div>
+        <div class="result-title">Online Coaching Institute</div>
+        <div class="result-desc">Lead generation funnels + CRM integration generated 800+ qualified enrolments within the first quarter of campaigns.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.4s">
+      <div class="result-card-top">
+        <div class="result-card-visual v5">🏠</div>
+        <div class="result-stat-badge">60+ Hot Leads/mo</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">Real Estate</div>
+        <div class="result-title">Property Developer — India</div>
+        <div class="result-desc">Consistent 60+ qualified real estate leads per month through targeted Facebook ad campaigns and high-converting landing pages.</div>
+      </div>
+    </div>
+    <div class="result-card reveal" style="transition-delay:0.5s">
+      <div class="result-card-top">
+        <div class="result-card-visual v6">💻</div>
+        <div class="result-stat-badge">+220% Traffic</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-category">SaaS / Tech</div>
+        <div class="result-title">Tech Startup — Website & SEO</div>
+        <div class="result-desc">New website build with SEO strategy grew organic traffic by 220% in 6 months, reducing paid ad dependency significantly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-intro">
+    <div class="section-label">Testimonials</div>
+    <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+    <p class="section-sub" style="margin:0 auto">Real words from real clients who trusted WixFox to grow their business.</p>
+  </div>
+  <div class="testimonials-track-wrap">
+    <div class="testimonials-track">
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox transformed our online presence completely. Within 3 months, our website traffic doubled and our sales skyrocketed. Akash and the team are genuinely invested in your growth.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--orange),var(--orange-light))">RK</div>
+          <div>
+            <div class="testi-name">Rahul Kumar</div>
+            <div class="testi-role">E-commerce Store Owner, USA</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The paid ads campaigns WixFox ran for us delivered a 4x return on our investment. Their team is responsive, professional, and truly understands what businesses need to grow digitally.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue))">SM</div>
+          <div>
+            <div class="testi-name">Sarah Mitchell</div>
+            <div class="testi-role">Founder, Health Brand, UK</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Incredible graphic design work and social media management. Our Instagram engagement went from almost nothing to thousands of genuine followers who actually buy from us!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#2EA043,#1A6FD4)">AP</div>
+          <div>
+            <div class="testi-name">Arun Patel</div>
+            <div class="testi-role">Restaurant Owner, India</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox built us a stunning website and then backed it up with an SEO strategy that actually works. We now rank on the first page of Google for our key terms. Absolutely brilliant!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#9B59B6,#1A6FD4)">JW</div>
+          <div>
+            <div class="testi-name">James Wilson</div>
+            <div class="testi-role">Tech Startup CEO, Canada</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The lead generation campaigns have been a game changer. We now get 60+ hot leads every single month. The ROI speaks for itself — WixFox is worth every penny.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E67E22,var(--orange))">DS</div>
+          <div>
+            <div class="testi-name">Deepak Shah</div>
+            <div class="testi-role">Real Estate Developer, India</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I was skeptical about digital marketing at first, but WixFox completely changed my mind. They redesigned our landing page and our conversion rate jumped by 220% in six weeks. Outstanding!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#1ABC9C,#1A6FD4)">NR</div>
+          <div>
+            <div class="testi-name">Neha Rao</div>
+            <div class="testi-role">SaaS Founder, Bangalore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Working with Akash feels like having a digital expert in-house. He proactively suggests improvements, reports clearly, and the results speak for themselves. Our brand awareness doubled.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E91E63,#9B59B6)">LC</div>
+          <div>
+            <div class="testi-name">Lena Chen</div>
+            <div class="testi-role">Fashion Brand Owner, Singapore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Our Google Ads were burning money before WixFox took over. Within the first month they cut our CPC by 45% and tripled our qualified leads. Genuinely one of the best decisions we made.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#FF6B00,#E67E22)">MV</div>
+          <div>
+            <div class="testi-name">Mohammed Vasim</div>
+            <div class="testi-role">Auto Dealer, UAE</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The video ads WixFox created for our product launch were jaw-dropping. They captured our brand perfectly and the campaigns generated 1,200+ orders in the first week. Total game changer!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#F39C12,#E74C3C)">PT</div>
+          <div>
+            <div class="testi-name">Priya Thakkar</div>
+            <div class="testi-role">D2C Beauty Brand, Mumbai</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I hired WixFox for just social media management but ended up getting an entire digital strategy. They are proactive, creative, and obsessed with delivering results. Could not recommend more highly.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#27AE60,#1A6FD4)">TM</div>
+          <div>
+            <div class="testi-name">Tom Mackenzie</div>
+            <div class="testi-role">Gym Owner, Australia</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox revamped our entire online store and the difference is night and day. Clean design, fast loading, and it converts beautifully. Our monthly revenue increased by 3x in four months.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#8E44AD,#3498DB)">KS</div>
+          <div>
+            <div class="testi-name">Kavita Sharma</div>
+            <div class="testi-role">Jewellery Store Owner, Surat</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">As a startup with a tight budget, I needed a team that was honest and efficient. WixFox delivered a world-class website and Facebook campaign that got us our first 500 customers. Incredible value!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#16A085,#F39C12)">RO</div>
+          <div>
+            <div class="testi-name">Richard Osei</div>
+            <div class="testi-role">Fintech Startup, Ghana</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">From our first call, Akash understood exactly what our coaching business needed. The funnel they built now runs on autopilot and brings us 40–50 qualified leads weekly. WixFox is simply the best!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--blue),#9B59B6)">VN</div>
+          <div>
+            <div class="testi-name">Vijay Nair</div>
+            <div class="testi-role">Business Coach, Kerala</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Duplicates for infinite scroll ── -->
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox transformed our online presence completely. Within 3 months, our website traffic doubled and our sales skyrocketed. Akash and the team are genuinely invested in your growth.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--orange),var(--orange-light))">RK</div>
+          <div>
+            <div class="testi-name">Rahul Kumar</div>
+            <div class="testi-role">E-commerce Store Owner, USA</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The paid ads campaigns WixFox ran for us delivered a 4x return on our investment. Their team is responsive, professional, and truly understands what businesses need to grow digitally.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--blue-dark),var(--blue))">SM</div>
+          <div>
+            <div class="testi-name">Sarah Mitchell</div>
+            <div class="testi-role">Founder, Health Brand, UK</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Incredible graphic design work and social media management. Our Instagram engagement went from almost nothing to thousands of genuine followers who actually buy from us!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#2EA043,#1A6FD4)">AP</div>
+          <div>
+            <div class="testi-name">Arun Patel</div>
+            <div class="testi-role">Restaurant Owner, India</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox built us a stunning website and then backed it up with an SEO strategy that actually works. We now rank on the first page of Google for our key terms. Absolutely brilliant!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#9B59B6,#1A6FD4)">JW</div>
+          <div>
+            <div class="testi-name">James Wilson</div>
+            <div class="testi-role">Tech Startup CEO, Canada</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The lead generation campaigns have been a game changer. We now get 60+ hot leads every single month. The ROI speaks for itself — WixFox is worth every penny.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E67E22,var(--orange))">DS</div>
+          <div>
+            <div class="testi-name">Deepak Shah</div>
+            <div class="testi-role">Real Estate Developer, India</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I was skeptical about digital marketing at first, but WixFox completely changed my mind. They redesigned our landing page and our conversion rate jumped by 220% in six weeks. Outstanding!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#1ABC9C,#1A6FD4)">NR</div>
+          <div>
+            <div class="testi-name">Neha Rao</div>
+            <div class="testi-role">SaaS Founder, Bangalore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Working with Akash feels like having a digital expert in-house. He proactively suggests improvements, reports clearly, and the results speak for themselves. Our brand awareness doubled.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E91E63,#9B59B6)">LC</div>
+          <div>
+            <div class="testi-name">Lena Chen</div>
+            <div class="testi-role">Fashion Brand Owner, Singapore</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Our Google Ads were burning money before WixFox took over. Within the first month they cut our CPC by 45% and tripled our qualified leads. Genuinely one of the best decisions we made.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#FF6B00,#E67E22)">MV</div>
+          <div>
+            <div class="testi-name">Mohammed Vasim</div>
+            <div class="testi-role">Auto Dealer, UAE</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The video ads WixFox created for our product launch were jaw-dropping. They captured our brand perfectly and the campaigns generated 1,200+ orders in the first week. Total game changer!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#F39C12,#E74C3C)">PT</div>
+          <div>
+            <div class="testi-name">Priya Thakkar</div>
+            <div class="testi-role">D2C Beauty Brand, Mumbai</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I hired WixFox for just social media management but ended up getting an entire digital strategy. They are proactive, creative, and obsessed with delivering results. Could not recommend more highly.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#27AE60,#1A6FD4)">TM</div>
+          <div>
+            <div class="testi-name">Tom Mackenzie</div>
+            <div class="testi-role">Gym Owner, Australia</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">WixFox revamped our entire online store and the difference is night and day. Clean design, fast loading, and it converts beautifully. Our monthly revenue increased by 3x in four months.</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#8E44AD,#3498DB)">KS</div>
+          <div>
+            <div class="testi-name">Kavita Sharma</div>
+            <div class="testi-role">Jewellery Store Owner, Surat</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">As a startup with a tight budget, I needed a team that was honest and efficient. WixFox delivered a world-class website and Facebook campaign that got us our first 500 customers. Incredible value!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#16A085,#F39C12)">RO</div>
+          <div>
+            <div class="testi-name">Richard Osei</div>
+            <div class="testi-role">Fintech Startup, Ghana</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">From our first call, Akash understood exactly what our coaching business needed. The funnel they built now runs on autopilot and brings us 40–50 qualified leads weekly. WixFox is simply the best!</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--blue),#9B59B6)">VN</div>
+          <div>
+            <div class="testi-name">Vijay Nair</div>
+            <div class="testi-role">Business Coach, Kerala</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-content">
+    <div class="section-label reveal" style="justify-content:center">
+      <span style="width:30px;height:2px;background:var(--orange);display:inline-block"></span>
+      Let's Work Together
+      <span style="width:30px;height:2px;background:var(--orange);display:inline-block"></span>
+    </div>
+    <h2 class="cta-title reveal">Let's Grow Your<br><span>Business Together</span></h2>
+    <p class="cta-sub reveal">Get in touch today for a free consultation. Let's build your digital success story together.</p>
+    <div class="cta-buttons reveal">
+      <a href="tel:+918511083277" class="btn-primary">📞 Call Now</a>
+      <a href="mailto:founder@wixfox.com" class="btn-secondary">✉️ Send Email</a>
+    </div>
+    <div class="cta-contact-grid cta-contact-grid--4 reveal">
+      <a href="tel:+918511083277" class="cta-contact-item">
+        <div class="cta-contact-icon">📞</div>
+        <div class="cta-contact-label">Phone</div>
+        <div class="cta-contact-val">+91 85110 83277</div>
+      </a>
+      <a href="mailto:founder@wixfox.com" class="cta-contact-item">
+        <div class="cta-contact-icon">✉️</div>
+        <div class="cta-contact-label">Email</div>
+        <div class="cta-contact-val">founder@wixfox.com</div>
+      </a>
+      <a href="https://wa.me/919724225971?text=Hi%20WixFox!%20I%27m%20interested%20in%20your%20services." target="_blank" class="cta-contact-item cta-contact-item--wa">
+        <div class="cta-contact-icon">💬</div>
+        <div class="cta-contact-label">WhatsApp</div>
+        <div class="cta-contact-val">+91 97242 25971</div>
+      </a>
+      <a href="https://www.wixfox.com" target="_blank" class="cta-contact-item">
+        <div class="cta-contact-icon">🌐</div>
+        <div class="cta-contact-label">Website</div>
+        <div class="cta-contact-val">www.wixfox.com</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--orange),var(--blue));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px">🦊</div>
+        <div>
+          <div class="footer-brand-title">Wix<span>Fox</span></div>
+          <div style="font-size:11px;color:var(--gray);letter-spacing:1px">DIGITAL SOLUTIONS</div>
+        </div>
+      </div>
+      <p class="footer-brand-desc" style="margin-top:20px">A results-driven digital agency helping businesses scale online with powerful strategies, modern websites, and result-driven marketing solutions. From Idea to Impact — We Make It Happen!</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-btn">📘</a>
+        <a href="#" class="footer-social-btn">📷</a>
+        <a href="#" class="footer-social-btn">💼</a>
+        <a href="#" class="footer-social-btn">▶️</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Website Development</a></li>
+        <li><a href="#services">Digital Marketing</a></li>
+        <li><a href="#services">Paid Advertising</a></li>
+        <li><a href="#services">Video Editing</a></li>
+        <li><a href="#services">Graphic Design</a></li>
+        <li><a href="#services">Lead Generation</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#why">Why WixFox</a></li>
+        <li><a href="#results">Portfolio</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#cta">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links" style="gap:18px">
+        <li><a href="tel:+918511083277" style="flex-direction:column;align-items:flex-start;gap:2px"><span style="color:var(--orange);font-size:11px">PHONE</span><span style="color:var(--white);font-size:14px">+91 85110 83277</span></a></li>
+        <li><a href="mailto:founder@wixfox.com" style="flex-direction:column;align-items:flex-start;gap:2px"><span style="color:var(--orange);font-size:11px">EMAIL</span><span style="color:var(--white);font-size:14px">founder@wixfox.com</span></a></li>
+        <li><a href="https://wa.me/919724225971" target="_blank" style="flex-direction:column;align-items:flex-start;gap:2px"><span style="color:#25D366;font-size:11px">WHATSAPP</span><span style="color:var(--white);font-size:14px">+91 97242 25971</span></a></li>
+        <li><a href="https://www.wixfox.com" style="flex-direction:column;align-items:flex-start;gap:2px"><span style="color:var(--orange);font-size:11px">WEBSITE</span><span style="color:var(--white);font-size:14px">www.wixfox.com</span></a></li>
+      </ul>
+      <div style="margin-top:28px;background:linear-gradient(135deg,var(--orange),var(--blue));padding:16px 20px;border-radius:16px;text-align:center">
+        <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-bottom:4px">Founder</div>
+        <div style="font-weight:700;font-size:16px">Akash Upadhyay</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7)">WixFox Digital Solutions</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 <span>WixFox Digital Solutions</span>. All rights reserved.</div>
+    <div>Built with ❤️ by <span>WixFox</span> — Scaling Businesses Digitally 🚀</div>
+  </div>
+</footer>
+
+<script>
+  // Custom Cursor
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+  function animRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top = ringY + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a,button,.service-card,.why-reason').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width='28px'; cursor.style.height='28px'; cursorRing.style.width='60px'; cursorRing.style.height='60px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width='18px'; cursor.style.height='18px'; cursorRing.style.width='40px'; cursorRing.style.height='40px'; });
+  });
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Particles
+  const particlesContainer = document.getElementById('particles');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 6 + 2;
+    p.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*15+10}s;
+      animation-delay:${Math.random()*10}s;
+      background:${Math.random()>0.5?'var(--orange)':'var(--blue)'};
+    `;
+    particlesContainer.appendChild(p);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el, target, duration=2000) {
+    const start = performance.now();
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(update);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !e.target.dataset.animated) {
+        e.target.dataset.animated = true;
+        animateCounter(e.target, parseInt(e.target.dataset.target));
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>
