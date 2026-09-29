@@ -1,0 +1,9 @@
+﻿User-agent: *
+Allow: /
+
+# Prevent indexing of temporary/scratch resources
+Disallow: /scratch/
+Disallow: *.json$
+
+# Sitemaps
+Sitemap: https://www.wixfox.com/sitemap.xml
