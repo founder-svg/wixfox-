@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Enterprise Security Headers -->
@@ -20,6 +21,9 @@
 <meta name="author" content="WixFox Digital Solutions">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://www.wixfox.com/">
+<!-- Google Search Console Verification -->
+<meta name="google-site-verification" content="googlefc7bf294da9a1fb4">
+<meta name="google-site-verification" content="fc7bf294da9a1fb4">
 
 <!-- Geo Meta Tags for Gandhidham & Kutch Exact Google Map Coordinates -->
 <meta name="geo.region" content="IN-GJ">
@@ -1371,13 +1375,46 @@ section {
   background: linear-gradient(to top, rgba(10,12,16,0.9) 0%, rgba(10,12,16,0.3) 50%, transparent 100%);
   pointer-events: none;
 }
-.result-card-visual.v1 { background-image: url('assets/project_software.jpg') !important; }
+.result-card-visual.v1 { background-image: url('assets/project_website.jpg') !important; }
 .result-card-visual.v2 { background-image: url('assets/project_marketing.jpg') !important; }
-.result-card-visual.v3 { background-image: url('assets/project_website.jpg') !important; }
-.result-card-visual.v4 { background-image: url('assets/project_video.jpg') !important; }
-.result-card-visual.v5 { background-image: url('assets/project_ai.jpg') !important; }
-.result-card-visual.v5 { background-image: url('assets/project_software.jpg') !important; }
-.result-card-visual.v6 { background-image: url('assets/project_website.jpg') !important; }
+.result-card-visual.v3 { background-image: url('assets/case_healthcare.jpg') !important; }
+.result-card-visual.v4 { background-image: url('assets/project_ai.jpg') !important; }
+.result-card-visual.v5 { background-image: url('assets/service_ads.jpg') !important; }
+.result-card-visual.v6 { background-image: url('assets/case_realestate.jpg') !important; }
+.result-card-visual.v7 { background-image: url('assets/service_video.jpg') !important; }
+
+.result-card-visual {
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.result-card:hover .result-card-visual {
+  transform: scale(1.06);
+}
+
+.result-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 18px;
+  padding: 10px 16px;
+  background: rgba(255, 107, 0, 0.08);
+  border: 1px solid rgba(255, 107, 0, 0.25);
+  border-radius: 10px;
+  color: var(--orange-light);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.result-card:hover .result-action-btn {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.35);
+  transform: translateY(-2px);
+}
 
 .result-stat-badge {
   position: absolute;
@@ -2131,6 +2168,127 @@ footer {
   .testi-card             { min-width: 300px; }
 }
 
+/* =============================================
+   ENHANCED SERVICE CARDS WITH RICH IMAGE BANNERS
+   ============================================= */
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 107, 0, 0.45);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 107, 0, 0.15);
+}
+
+.service-card.blue-card:hover {
+  border-color: rgba(26, 111, 212, 0.45);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(26, 111, 212, 0.15);
+}
+
+.service-card-banner {
+  width: 100%;
+  height: 180px;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.6s ease;
+}
+
+.service-card:hover .service-card-banner {
+  transform: scale(1.04);
+}
+
+.service-card-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(17, 19, 24, 0.95) 0%, rgba(17, 19, 24, 0.3) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+.service-card-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: linear-gradient(135deg, var(--orange), #FF2E00);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  padding: 5px 12px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+  z-index: 2;
+}
+
+.service-card-body {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.service-icon-floating {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-top: -52px;
+  margin-bottom: 16px;
+  border: 3px solid #111318;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 3;
+}
+
+.service-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 22px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-cta-btn {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.service-card.blue-card:hover .service-cta-btn {
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 4px 20px rgba(26, 111, 212, 0.35);
+}
 </style>
 
 <!-- Structured Data (JSON-LD) for Google Search #1-#3 Ranking -->
@@ -2488,6 +2646,7 @@ footer {
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
+    <div class="ticker-item">AI Development Services <span class="ticker-dot">&#9670;</span></div>
     <div class="ticker-item">Website Development <span class="ticker-dot">◆</span></div>
     <div class="ticker-item">Digital Marketing <span class="ticker-dot">◆</span></div>
     <div class="ticker-item">Paid Advertising <span class="ticker-dot">◆</span></div>
@@ -2498,6 +2657,7 @@ footer {
     <div class="ticker-item">Social Media <span class="ticker-dot">◆</span></div>
     <div class="ticker-item">Brand Growth <span class="ticker-dot">◆</span></div>
     <!-- duplicate for infinite loop -->
+    <div class="ticker-item">AI Development Services <span class="ticker-dot">&#9670;</span></div>
     <div class="ticker-item">Website Development <span class="ticker-dot">◆</span></div>
     <div class="ticker-item">Digital Marketing <span class="ticker-dot">◆</span></div>
     <div class="ticker-item">Paid Advertising <span class="ticker-dot">◆</span></div>
@@ -2514,11 +2674,13 @@ footer {
 <section id="about">
   <div class="about-grid">
     <div class="about-image-stack reveal-left">
-      <div class="about-img-main">
-        <div style="text-align:center;padding:30px">
-          <div style="font-size:120px;filter:drop-shadow(0 10px 30px rgba(255,107,0,0.4))">🦊</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange);letter-spacing:2px">WixFox Digital Solutions</div>
-          <div style="font-size:13px;color:var(--gray);margin-top:8px">From Idea to Impact – We Make It Happen!</div>
+      <div class="about-img-main" style="overflow:hidden;position:relative;background:#0A0C10;border-radius:24px;border:1px solid var(--border);height:420px">
+        <img src="assets/about_team.jpg" alt="WixFox Digital Solutions Global Headquarters &amp; Team" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,12,16,0.92) 0%, rgba(10,12,16,0.2) 60%, transparent 100%);pointer-events:none"></div>
+        <div style="position:absolute;bottom:24px;left:24px;right:24px;z-index:2">
+          <div style="display:inline-block;background:var(--orange);color:#fff;font-size:10px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:20px;margin-bottom:6px;text-transform:uppercase">GLOBAL HEADQUARTERS</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--white);letter-spacing:1px">WixFox Digital Solutions</div>
+          <div style="font-size:12px;color:var(--orange-light);font-weight:600">Borichi, Gandhidham &bull; Serving Gujarat, India &amp; USA</div>
         </div>
       </div>
       <div class="about-img-float">
@@ -2571,131 +2733,202 @@ footer {
     <p style="font-size:15px;color:var(--gray);max-width:360px;line-height:1.8">Everything your business needs to succeed online — under one roof, delivered with excellence.</p>
   </div>
   <div class="services-grid">
-    <!-- Card 1: AI Development Services (FEATURED & AVAILABLE NOW) -->
-    <div class="service-card reveal" style="border:2px solid var(--orange);box-shadow:0 8px 36px rgba(255,107,0,0.25);position:relative;background:linear-gradient(180deg,rgba(255,107,0,0.08) 0%,rgba(17,19,24,0.95) 100%)">
-      <div style="position:absolute;top:16px;right:16px;background:linear-gradient(135deg,var(--orange),#FF2E00);color:#fff;font-size:10px;font-weight:900;letter-spacing:1.2px;padding:5px 12px;border-radius:50px;text-transform:uppercase;box-shadow:0 4px 15px rgba(255,107,0,0.4)">&#128293; AVAILABLE NOW</div>
-      <div class="service-icon orange" style="font-size:32px">&#129302;</div>
-      <div class="service-title" style="color:#fff">AI Development Services</div>
-      <div class="service-desc">Cutting-edge artificial intelligence tailored to your business at the industry's best price. We build autonomous AI agents, OpenAI (ChatGPT) / Claude / Gemini integrations, 24/7 intelligent WhatsApp &amp; web chatbots, OCR invoice data extraction, and end-to-end workflow automation.</div>
-      <div class="service-tags">
-        <span class="service-tag" style="border-color:var(--orange);color:var(--orange-light)">Custom AI Agents</span>
-        <span class="service-tag">LLM &amp; ChatGPT</span>
-        <span class="service-tag">Workflow Automation</span>
-        <span class="service-tag" style="background:var(--orange);color:#fff;font-weight:700">Best Price</span>
+    <!-- Card 1: AI Development Services -->
+    <div class="service-card reveal" style="border:2px solid var(--orange);box-shadow:0 8px 36px rgba(255,107,0,0.25)">
+      <div class="service-card-banner" style="background-image:url('assets/service_ai.jpg')">
+        <div class="service-card-badge">&#128293; AVAILABLE NOW &bull; BEST PRICE</div>
       </div>
-      <div class="service-arrow" style="border-color:var(--orange);color:var(--orange)">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating orange">&#129302;</div>
+        <div class="service-title" style="color:#fff">AI Development Services</div>
+        <div class="service-desc">Cutting-edge artificial intelligence tailored to your business at the industry's best price: Autonomous AI agents, OpenAI / Claude / Gemini LLM integrations, 24/7 intelligent WhatsApp &amp; web chatbots, OCR invoice processing, and automated business workflows.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag" style="border-color:var(--orange);color:var(--orange-light)">Custom AI Agents</span>
+          <span class="service-tag">LLM &amp; ChatGPT</span>
+          <span class="service-tag">Workflow Automation</span>
+          <span class="service-tag" style="background:var(--orange);color:#fff;font-weight:700">Best Price</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20am%20interested%20in%20your%20AI%20Development%20Services." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Consult AI Experts</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Card 2: Custom Software & ERP -->
-    <div class="service-card blue-card reveal" style="transition-delay:0.1s">
-      <div class="service-icon blue" style="font-size:30px">&#128187;</div>
-      <div class="service-title">Custom Software &amp; ERP</div>
-      <div class="service-desc">Custom enterprise software, Kandla &amp; Mundra port shipping ERP, timber sawmill inventory and GST billing systems, cloud SaaS architectures, and automated inventory systems engineered for high speed and rock-solid reliability.</div>
-      <div class="service-tags">
-        <span class="service-tag">Logistics ERP</span>
-        <span class="service-tag">GST Billing</span>
-        <span class="service-tag">Custom SaaS</span>
-        <span class="service-tag">Cloud Backends</span>
+    <div class="service-card blue-card reveal" style="transition-delay:0.08s">
+      <div class="service-card-banner" style="background-image:url('assets/service_software.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,var(--blue),#0044AA)">Enterprise Grade</div>
       </div>
-      <div class="service-arrow">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating blue">&#128187;</div>
+        <div class="service-title">Custom Software &amp; ERP</div>
+        <div class="service-desc">Custom enterprise software, Kandla &amp; Mundra port shipping ERP, timber sawmill inventory and GST billing systems, cloud SaaS architectures, and automated inventory systems engineered for high speed and rock-solid reliability.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag">Logistics ERP</span>
+          <span class="service-tag">GST Billing</span>
+          <span class="service-tag">Custom SaaS</span>
+          <span class="service-tag">Cloud Backends</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20need%20custom%20software%20or%20ERP%20development." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Build Custom Software</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Card 3: Website Development -->
-    <div class="service-card reveal" style="transition-delay:0.15s">
-      <div class="service-icon orange" style="font-size:30px">&#127760;</div>
-      <div class="service-title">Website Development</div>
-      <div class="service-desc">Professional, ultra-fast, responsive, SEO-optimized websites that turn casual visitors into paying customers. From high-converting corporate landing pages to full-featured headless e-commerce stores.</div>
-      <div class="service-tags">
-        <span class="service-tag">Corporate Sites</span>
-        <span class="service-tag">E-Commerce</span>
-        <span class="service-tag">Landing Pages</span>
-        <span class="service-tag">Next.js &amp; React</span>
+    <div class="service-card reveal" style="transition-delay:0.16s">
+      <div class="service-card-banner" style="background-image:url('assets/service_website.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,var(--orange),#E05600)">High Converting</div>
       </div>
-      <div class="service-arrow">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating orange">&#127760;</div>
+        <div class="service-title">Website Development</div>
+        <div class="service-desc">Professional, ultra-fast, responsive, SEO-optimized websites that turn casual visitors into paying customers. From high-converting corporate landing pages to full-featured headless e-commerce stores.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag">Corporate Sites</span>
+          <span class="service-tag">E-Commerce</span>
+          <span class="service-tag">Landing Pages</span>
+          <span class="service-tag">Next.js &amp; React</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20want%20to%20build%20a%20new%20website." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Launch Your Website</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Card 4: Digital Marketing & SEO -->
-    <div class="service-card blue-card reveal" style="transition-delay:0.2s">
-      <div class="service-icon blue" style="font-size:30px">&#128227;</div>
-      <div class="service-title">Digital Marketing &amp; SEO</div>
-      <div class="service-desc">Dominate Google Search with #1 to #3 rankings. Full-funnel search engine optimization, Google Maps 3-Pack local ranking, content marketing, and high-impact social media management that puts you miles ahead of competitors.</div>
-      <div class="service-tags">
-        <span class="service-tag">Google SEO #1</span>
-        <span class="service-tag">Google Maps 3-Pack</span>
-        <span class="service-tag">Brand Growth</span>
-        <span class="service-tag">Social Media</span>
+    <div class="service-card blue-card reveal" style="transition-delay:0.24s">
+      <div class="service-card-banner" style="background-image:url('assets/service_marketing.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,var(--blue),#0044AA)">#1 Ranking Focus</div>
       </div>
-      <div class="service-arrow">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating blue">&#128227;</div>
+        <div class="service-title">Digital Marketing &amp; SEO</div>
+        <div class="service-desc">Dominate Google Search with #1 to #3 rankings. Full-funnel search engine optimization, Google Maps 3-Pack local ranking, content marketing, and high-impact social media management that puts you miles ahead of competitors.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag">Google SEO #1</span>
+          <span class="service-tag">Google Maps 3-Pack</span>
+          <span class="service-tag">Brand Growth</span>
+          <span class="service-tag">Social Media</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20want%20to%20rank%20#1%20on%20Google." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Rank #1 on Google</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Card 5: Paid Ads Management -->
-    <div class="service-card reveal" style="transition-delay:0.25s">
-      <div class="service-icon orange" style="font-size:30px">&#128202;</div>
-      <div class="service-title">Paid Ads Management</div>
-      <div class="service-desc">High-converting Google Search &amp; Display ads, Meta (Facebook &amp; Instagram) campaigns, and YouTube paid media engineered for positive ROAS, lower customer acquisition cost, and steady daily customer inquiries.</div>
-      <div class="service-tags">
-        <span class="service-tag">Google Search Ads</span>
-        <span class="service-tag">Instagram Ads</span>
-        <span class="service-tag">Facebook Retargeting</span>
-        <span class="service-tag">High ROAS</span>
+    <div class="service-card reveal" style="transition-delay:0.32s">
+      <div class="service-card-banner" style="background-image:url('assets/service_ads.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,var(--orange),#E05600)">5.2x Avg ROAS</div>
       </div>
-      <div class="service-arrow">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating orange">&#128202;</div>
+        <div class="service-title">Paid Ads Management</div>
+        <div class="service-desc">High-converting Google Search &amp; Display ads, Meta (Facebook &amp; Instagram) campaigns, and YouTube paid media engineered for positive ROAS, lower customer acquisition cost, and steady daily customer inquiries.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag">Google Search Ads</span>
+          <span class="service-tag">Instagram Ads</span>
+          <span class="service-tag">Facebook Retargeting</span>
+          <span class="service-tag">High ROAS</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20want%20to%20scale%20my%20paid%20ads." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Scale Paid Ads</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Card 6: Video Editing & Commercial Ads -->
-    <div class="service-card blue-card reveal" style="transition-delay:0.3s">
-      <div class="service-icon blue" style="font-size:30px">&#127916;</div>
-      <div class="service-title">Video Editing &amp; Ads Video</div>
-      <div class="service-desc">Engaging promotional commercial videos, high-retention Instagram Reels, YouTube Shorts, and viral video ad creatives with dynamic motion graphics that capture immediate attention and drive action in seconds.</div>
-      <div class="service-tags">
-        <span class="service-tag">Commercial Promo</span>
-        <span class="service-tag">Ad Creatives</span>
-        <span class="service-tag">Reels &amp; Shorts</span>
-        <span class="service-tag">Motion Graphics</span>
+    <div class="service-card blue-card reveal" style="transition-delay:0.4s">
+      <div class="service-card-banner" style="background-image:url('assets/service_video.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,var(--blue),#0044AA)">Viral Creatives</div>
       </div>
-      <div class="service-arrow">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating blue">&#127916;</div>
+        <div class="service-title">Video Editing &amp; Ads Video</div>
+        <div class="service-desc">Engaging promotional commercial videos, high-retention Instagram Reels, YouTube Shorts, and viral video ad creatives with dynamic motion graphics that capture immediate attention and drive action in seconds.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag">Commercial Promo</span>
+          <span class="service-tag">Ad Creatives</span>
+          <span class="service-tag">Reels &amp; Shorts</span>
+          <span class="service-tag">Motion Graphics</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20need%20commercial%20video%20editing%20or%20ad%20creatives." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Create Video Ads</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Card 7: Graphic Design & Branding -->
-    <div class="service-card reveal" style="transition-delay:0.35s">
-      <div class="service-icon orange" style="font-size:30px">&#127912;</div>
-      <div class="service-title">Graphic Design &amp; Branding</div>
-      <div class="service-desc">Creative design systems, high-converting social media creatives, banner ads, product packaging, brochures, and complete brand identity packages that leave a premium, unforgettable impression on your target audience.</div>
-      <div class="service-tags">
-        <span class="service-tag">Social Creatives</span>
-        <span class="service-tag">Brand Identity</span>
-        <span class="service-tag">Logos &amp; Banners</span>
-        <span class="service-tag">Print &amp; Packaging</span>
+    <div class="service-card reveal" style="transition-delay:0.48s">
+      <div class="service-card-banner" style="background-image:url('assets/service_graphic.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,var(--orange),#E05600)">Premium Identity</div>
       </div>
-      <div class="service-arrow">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating orange">&#127912;</div>
+        <div class="service-title">Graphic Design &amp; Branding</div>
+        <div class="service-desc">Creative design systems, high-converting social media creatives, banner ads, product packaging, brochures, and complete brand identity packages that leave a premium, unforgettable impression on your target audience.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag">Social Creatives</span>
+          <span class="service-tag">Brand Identity</span>
+          <span class="service-tag">Logos &amp; Banners</span>
+          <span class="service-tag">Print &amp; Packaging</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20need%20graphic%20design%20and%20branding." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Get Brand Designs</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Card 8: Lead Generation Funnels -->
-    <div class="service-card blue-card reveal" style="transition-delay:0.4s">
-      <div class="service-icon blue" style="font-size:30px">&#127919;</div>
-      <div class="service-title">Lead Generation Funnels</div>
-      <div class="service-desc">Turn traffic into verified sales pipelines. Multi-step qualification funnels, automated CRM integrations, automated email follow-up sequences, and high-intent B2B and B2C buyer lead pipelines that close deals automatically.</div>
-      <div class="service-tags">
-        <span class="service-tag">B2B Leads</span>
-        <span class="service-tag">CRM Integration</span>
-        <span class="service-tag">Email Sequences</span>
-        <span class="service-tag">Sales Pipeline</span>
+    <div class="service-card blue-card reveal" style="transition-delay:0.56s">
+      <div class="service-card-banner" style="background-image:url('assets/service_leads.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,var(--blue),#0044AA)">Verified Pipelines</div>
       </div>
-      <div class="service-arrow">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating blue">&#127919;</div>
+        <div class="service-title">Lead Generation Funnels</div>
+        <div class="service-desc">Turn traffic into verified sales pipelines. Multi-step qualification funnels, automated CRM integrations, automated email follow-up sequences, and high-intent B2B and B2C buyer lead pipelines that close deals automatically.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag">B2B Leads</span>
+          <span class="service-tag">CRM Integration</span>
+          <span class="service-tag">Email Sequences</span>
+          <span class="service-tag">Sales Pipeline</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20need%20lead%20generation%20funnels." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Generate Qualified Leads</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Card 9: WhatsApp AI & Automation -->
-    <div class="service-card reveal" style="transition-delay:0.45s;border:1px solid rgba(37,211,102,0.4)">
-      <div class="service-icon" style="background:linear-gradient(135deg,#25D366,#128C7E);font-size:30px;box-shadow:0 8px 30px rgba(37,211,102,0.3)">&#128172;</div>
-      <div class="service-title">WhatsApp AI &amp; Automation</div>
-      <div class="service-desc">Official Meta WhatsApp Business Cloud API integration, intelligent AI chatbots that answer customer questions 24/7, automated order notifications, broadcast marketing campaigns, and instant click-to-WhatsApp lead funnels.</div>
-      <div class="service-tags">
-        <span class="service-tag">Meta Cloud API</span>
-        <span class="service-tag">24/7 WhatsApp AI</span>
-        <span class="service-tag">Broadcast Campaigns</span>
-        <span class="service-tag">Auto-Responder</span>
+    <div class="service-card reveal" style="transition-delay:0.64s;border:1px solid rgba(37,211,102,0.4)">
+      <div class="service-card-banner" style="background-image:url('assets/service_whatsapp.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,#25D366,#128C7E)">24/7 Automation</div>
       </div>
-      <div class="service-arrow">&rarr;</div>
+      <div class="service-card-body">
+        <div class="service-icon-floating" style="background:linear-gradient(135deg,#25D366,#128C7E);font-size:26px;box-shadow:0 8px 24px rgba(37,211,102,0.4)">&#128172;</div>
+        <div class="service-title">WhatsApp AI &amp; Automation</div>
+        <div class="service-desc">Official Meta WhatsApp Business Cloud API integration, intelligent AI chatbots that answer customer questions 24/7, automated order notifications, broadcast marketing campaigns, and instant click-to-WhatsApp lead funnels.</div>
+        <div class="service-tags" style="margin-top:auto;padding-top:14px">
+          <span class="service-tag">Meta Cloud API</span>
+          <span class="service-tag">24/7 WhatsApp AI</span>
+          <span class="service-tag">Broadcast Campaigns</span>
+          <span class="service-tag">Auto-Responder</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20want%20WhatsApp%20AI%20and%20chat%20automation." target="_blank" rel="noopener noreferrer" class="service-cta-btn" style="border-color:#25D366;color:#25D366">
+          <span>Automate WhatsApp Chat</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
     </div>
   </div></section>
 
@@ -2719,43 +2952,63 @@ footer {
   <div class="services-grid">
 
     <div class="service-card reveal">
-      <div class="service-icon orange">&#128205;</div>
-      <div class="service-title">Kutch & Gujarat Hub</div>
-      <div class="service-desc">The #1 choice for local businesses, industrial units, real estate developers, and service professionals in Bhuj, Gandhidham, Mundra, Anjar, Ahmedabad, Surat, Rajkot, and Vadodara. Local SEO, Google Maps 3-Pack domination, and high-conversion regional funnels.</div>
-      <div class="service-tags">
-        <span class="service-tag">Kutch & Bhuj</span>
-        <span class="service-tag">Gandhidham & Mundra</span>
-        <span class="service-tag">Ahmedabad & Surat</span>
+      <div class="service-card-banner" style="background-image:url('assets/hub_gujarat.jpg')">
+        <div class="service-card-badge">&#128205; LOCAL HEADQUARTERS</div>
       </div>
-      <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%27m%20based%20in%20Gujarat%20and%20want%20to%20grow%20my%20business." target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:18px;color:var(--orange);font-weight:700;text-decoration:none;font-size:14px">Scale Local Business &rarr;</a>
+      <div class="service-card-body">
+        <div class="service-icon-floating orange">&#128205;</div>
+        <div class="service-title">Kutch &amp; Gujarat Hub</div>
+        <div class="service-desc">The #1 choice for local businesses, industrial units, real estate developers, and service professionals in Bhuj, Gandhidham, Mundra, Anjar, Ahmedabad, Surat, Rajkot, and Vadodara. Local SEO, Google Maps 3-Pack domination, and high-conversion regional funnels.</div>
+        <div class="service-tags">
+          <span class="service-tag">Kutch &amp; Bhuj</span>
+          <span class="service-tag">Gandhidham &amp; Mundra</span>
+          <span class="service-tag">Ahmedabad &amp; Surat</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%27m%20based%20in%20Gujarat%20and%20want%20to%20grow%20my%20business." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Scale Local Business</span> <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <div class="service-card blue-card reveal" style="transition-delay:0.1s">
-      <div class="service-icon blue">&#127470;&#127475;</div>
-      <div class="service-title">Pan-India Tier 1 & 2 Metros</div>
-      <div class="service-desc">Delivering high-performance digital marketing, full-stack website development, and B2B/B2C lead funnels across Mumbai, Bangalore, Delhi NCR, Pune, Hyderabad, Chennai, Jaipur, Indore, Chandigarh, and beyond.</div>
-      <div class="service-tags">
-        <span class="service-tag">Mumbai & Delhi</span>
-        <span class="service-tag">Bangalore & Pune</span>
-        <span class="service-tag">Tier 1 & Tier 2</span>
+      <div class="service-card-banner" style="background-image:url('assets/hub_india.jpg')">
+        <div class="service-card-badge" style="background:linear-gradient(135deg,#1A6FD4,#00C2FF)">&#127470;&#127475; NATIONAL EXECUTION</div>
       </div>
-      <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20need%20national%20digital%20marketing%20services%20in%20India." target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:18px;color:var(--blue-light);font-weight:700;text-decoration:none;font-size:14px">Get Pan-India Leads &rarr;</a>
+      <div class="service-card-body">
+        <div class="service-icon-floating blue">&#127470;&#127475;</div>
+        <div class="service-title">Pan-India Tier 1 &amp; 2 Metros</div>
+        <div class="service-desc">Delivering high-performance digital marketing, full-stack website development, and B2B/B2C lead funnels across Mumbai, Bangalore, Delhi NCR, Pune, Hyderabad, Chennai, Jaipur, Indore, Chandigarh, and beyond.</div>
+        <div class="service-tags">
+          <span class="service-tag">Mumbai &amp; Delhi</span>
+          <span class="service-tag">Bangalore &amp; Pune</span>
+          <span class="service-tag">Tier 1 &amp; Tier 2</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%20need%20national%20digital%20marketing%20services%20in%20India." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Get Pan-India Leads</span> <span>&rarr;</span>
+        </a>
+      </div>
     </div>
 
     <div class="service-card reveal" style="transition-delay:0.2s">
-      <div class="service-icon orange">&#127482;&#127488;</div>
-      <div class="service-title">USA & Global Clients</div>
-      <div class="service-desc">Trusted by founders, agencies, and small businesses in the United States, UK, UAE (Dubai), Canada, and Australia. Get world-class websites, paid media buying, and white-label development at 60-70% lower overhead costs with 24/7 timezone coverage.</div>
-      <div class="service-tags">
-        <span class="service-tag">United States (USA)</span>
-        <span class="service-tag">UK & UAE / Dubai</span>
-        <span class="service-tag">Canada & Australia</span>
+      <div class="service-card-banner" style="background-image:url('assets/hub_usa.jpg')">
+        <div class="service-card-badge">&#127482;&#127488; 24/7 OVERSEAS DELIVERY</div>
       </div>
-      <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%27m%20an%20international%20client%20interested%20in%20outsourcing%20digital%20work." target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:18px;color:var(--orange);font-weight:700;text-decoration:none;font-size:14px">Start Offshore Project &rarr;</a>
+      <div class="service-card-body">
+        <div class="service-icon-floating orange">&#127482;&#127488;</div>
+        <div class="service-title">USA &amp; Global Clients</div>
+        <div class="service-desc">Trusted by founders, agencies, and small businesses in the United States, UK, UAE (Dubai), Canada, and Australia. Get world-class websites, paid media buying, and white-label development at 60-70% lower overhead costs with 24/7 timezone coverage.</div>
+        <div class="service-tags">
+          <span class="service-tag">United States (USA)</span>
+          <span class="service-tag">UK &amp; UAE / Dubai</span>
+          <span class="service-tag">Canada &amp; Australia</span>
+        </div>
+        <a href="https://wa.me/918511083277?text=Hi%20WixFox!%20I%27m%20an%20international%20client%20interested%20in%20outsourcing%20digital%20work." target="_blank" rel="noopener noreferrer" class="service-cta-btn">
+          <span>Start Offshore Project</span> <span>&rarr;</span>
+        </a>
+      </div>
     </div>
   </div>
-
-  <!-- Interactive Google Map Embed centered on Gandhidham Coordinates 23.0641959, 70.1128696 -->
+<!-- Interactive Google Map Embed centered on Gandhidham Coordinates 23.0641959, 70.1128696 -->
   <div class="map-card-wrap reveal" style="margin-top:50px;background:var(--card-bg);border:1px solid var(--border);border-radius:24px;padding:32px;box-shadow:0 10px 40px rgba(0,0,0,0.5)">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;margin-bottom:24px">
       <div>
@@ -2852,7 +3105,7 @@ footer {
 <section id="why">
   <div class="why-grid">
     <div class="why-visual reveal-left">
-      <div class="why-card-main">
+      <div class="why-card-main" style="background:linear-gradient(180deg, rgba(17,19,24,0.85) 0%, rgba(10,12,16,0.95) 100%), url('assets/service_leads.jpg') center/cover no-repeat;border:1px solid var(--border)">
         <div style="font-size:40px;margin-bottom:16px">🦊</div>
         <div class="why-big-text">WHY<br>WIXFOX?</div>
         <div class="why-card-label">The Smart Choice for Digital Growth</div>
